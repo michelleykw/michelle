@@ -23,6 +23,12 @@ const useStyles = makeStyles(theme => ({
     },
     textAlignCenter: {
         textAlign: "center"
+    },
+    leftBar: {
+        minHeight: "76vh",
+        borderRightStyle: 'solid',
+        borderRightWidth: 1,
+        borderRightColor: theme.palette.text.primary,
     }
 }));
 
@@ -32,13 +38,17 @@ function NotFound() {
     const classes = useStyles();
 
     return (
-        <Grid className={classes.container}>
-            <Typography variant="h1" className={classes.gradientText}>
-                Oh no, the page can’t be found :(
-            </Typography>
-            <Typography variant="subtitle2">
-                Are you looking for any of the following pages?
-            </Typography>
+        <Grid container className={classes.container}>
+            <Grid xs={1} className={classes.leftBar}>mm</Grid>
+            <Grid xs={11}>
+                <Typography variant="h1" className={classes.gradientText}>
+                    Oh no, the page can’t be found :(
+                </Typography>
+            
+                <Typography variant="subtitle2">
+                    Are you looking for any of the following pages?
+                </Typography>
+            </Grid>
         </Grid>
     );
 }

@@ -17,7 +17,6 @@ const useStyles = makeStyles(theme => ({
     },
     hoverCursor: {
         '&:hover': {
-            color: theme.palette.primary.main,
             '& $cursor': {
                 transform: "translate(-50%, -50%) scale(1.7)",
                 border: "1px solid",
@@ -73,7 +72,6 @@ const useStyles = makeStyles(theme => ({
         minHeight: "calc(100vh - 112px)"
     },
     introDesc: {
-        backgroundColor: theme.palette.background.default,
         [theme.breakpoints.up('md')]: {
             paddingBottom: theme.spacing(10)
         },
@@ -93,6 +91,9 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down('xs')]: {
             paddingBottom: theme.spacing(2)
         }
+    },
+    background: {
+        backgroundColor: theme.palette.background.default
     },
     ul: {
         marginLeft: theme.spacing(4),
@@ -139,9 +140,9 @@ function About() {
 
     const renderIntro = () => {
         return (
-            <Grid container justify="center" alignItems="center" className={classes.fullScreenWithHeaderHeight} id="aboutIntro">
-                <Grid xs={5} className={`${classes.introDesc} ${classes.hoverCursor}`}>
-                    <Typography variant="h1" className={`${classes.gradientText} ${classes.isHoverCursor}`}>
+            <Grid container justify="center" alignItems="center" className={`${classes.fullScreenWithHeaderHeight}`} id="aboutIntro">
+                <Grid xs={5} className={classes.introDesc}>
+                    <Typography variant="h1" className={`${classes.gradientText} ${classes.background}`}>
                         Michelle Yong;
                     </Typography>
                     <Typography variant="h6" color="primary" className={`${classes.mb2} ${classes.mt5}`}>
@@ -150,8 +151,6 @@ function About() {
                     <Typography variant="subtitle1">
                         Hello there, nice to meet you! This is Michelle, a Year 4 NUS undergraduate, pursuing a Bachelor of Computing in Computer Science and a minor in Management. I enjoy design, product and development ♡
                     </Typography>
-                    <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
-                    <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
                 </Grid>
                 <Grid container item xs={5} justify="flex-end">
                     <img
@@ -166,11 +165,11 @@ function About() {
     const renderExpertise = () => {
         return (
             <Grid container justify="center" alignItems="center" className={classes.fullScreenHeight} id="aboutExpertise">
-                <Grid container item xs={8} justify="center">
+                <Grid container item xs={8} justify="center" className={`${classes.hoverCursor} ${classes.background}`}>
                     <Typography variant="h2" className={`${classes.gradientText} ${classes.mb5}`}>Expertise</Typography>
-                    <Typography variant="h3" className={classes.textAlignCenter}> 
-                        {expertise}
-                    </Typography>
+                    <Typography variant="h3" className={`${classes.textAlignCenter}`}>{expertise}</Typography>
+                    <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
+                    <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
                 </Grid>
             </Grid>
         );

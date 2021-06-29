@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import {
     AppBar,
@@ -39,12 +39,16 @@ const useStyles = makeStyles(theme => ({
     },
     drawer: {
         padding: theme.spacing(9)
+    },
+    michelle: {
+        cursor: "pointer"
     }
 }));
 
 function Header() {
     const classes = useStyles();
     const location = useLocation();
+    let history = useHistory();
     const [isMobileView, setIsMobileView] = useState(false);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -62,6 +66,10 @@ function Header() {
             window.removeEventListener("resize", () => setResponsiveness());
         };
     }, []);
+
+    const goToHomePage = () => {
+        history.push("/");
+    }
 
     const handleCloseDrawer = () => {
         setIsDrawerOpen(false);
@@ -114,7 +122,9 @@ function Header() {
         <AppBar position="static" className={classes.header}>
             <Toolbar>
                 <Grid container justify="space-between" justifyContent="center">
-                    <Typography variant="h3" color="textPrimary">*M</Typography>
+                    <Typography variant="h3" color="textPrimary" onClick={goToHomePage} className={classes.michelle}>
+                        *M
+                    </Typography>
                     {isMobileView ? renderMobileDisplay() : renderDesktopDisplay()}
                 </Grid>
             </Toolbar>
