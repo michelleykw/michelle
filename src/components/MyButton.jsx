@@ -6,7 +6,6 @@ const useStyles = makeStyles(theme => ({
     button: {
         backgroundColor: theme.palette.primary[50],
         borderRadius: theme.spacing(5),
-        minWidth: theme.spacing(30),
         height: theme.spacing(6),
         color: theme.palette.primary.dark,
         '&:hover': {
@@ -14,9 +13,15 @@ const useStyles = makeStyles(theme => ({
             color: theme.palette.primary.contrastText
         },
     },
+    small: {
+        minWidth: theme.spacing(20)
+    },
+    large: {
+        minWidth: theme.spacing(30)
+    }
 }));
 
-function MyButton({ content, onClick, icon, size, variant, disabled = false }) {
+function MyButton({ content, onClick, icon, size = "large", variant, disabled = false }) {
     const classes = useStyles();
 
     return (
@@ -25,7 +30,7 @@ function MyButton({ content, onClick, icon, size, variant, disabled = false }) {
             variant={variant || "outlined"}
             startIcon={icon}
             onClick={onClick}
-            className={classes.button}
+            className={`${classes.button} ${classes[size]}`}
         >
             {content}
         </ Button>

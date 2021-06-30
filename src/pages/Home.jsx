@@ -145,9 +145,9 @@ function Home() {
 
     const renderIntro = () => {
         return (
-            <Grid container justify="center" alignItems="center" className={`${classes.fullScreenWithFooterHeight}`} id="homeIntro">
+            <Grid container justify="center" alignItems="center" className={`${classes.fullScreenWithFooterHeight} ${classes.backgroundColor}`} id="homeIntro">
                 <Grid container item xs={8} justify="center">
-                    <Typography variant="h3" className={`${classes.textAlignCenter} ${classes.mb4} ${classes.hoverCursor} ${classes.backgroundColor}`}>
+                    <Typography variant="h3" className={`${classes.textAlignCenter} ${classes.mb4} ${classes.hoverCursor}`}>
                         {introduction}
                         <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
                         <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />

@@ -164,8 +164,8 @@ function About() {
 
     const renderExpertise = () => {
         return (
-            <Grid container justify="center" alignItems="center" className={classes.fullScreenHeight} id="aboutExpertise">
-                <Grid container item xs={8} justify="center" className={`${classes.hoverCursor} ${classes.background}`}>
+            <Grid container justify="center" alignItems="center" className={`${classes.background} ${classes.fullScreenHeight}`} id="aboutExpertise">
+                <Grid container item xs={8} justify="center" className={`${classes.hoverCursor}`}>
                     <Typography variant="h2" className={`${classes.gradientText} ${classes.mb5}`}>Expertise</Typography>
                     <Typography variant="h3" className={`${classes.textAlignCenter}`}>{expertise}</Typography>
                     <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
