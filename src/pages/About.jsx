@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
+import ColoredHeader from '../components/ColoredHeader';
 import { experiences, expertise, tools } from '../resources/constants'
 
 const useStyles = makeStyles(theme => ({
@@ -55,12 +56,6 @@ const useStyles = makeStyles(theme => ({
         transform: "translate(-50%, -50%)",
         transition: ".15s",
         backfaceVisibility: "hidden",
-    },
-    gradientText: {
-        background: "-webkit-linear-gradient(#355C7D, #6C5B7B, #C67B90)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        paddingBottom: theme.spacing(1.5)
     },
     textAlignCenter: {
         textAlign: "center"
@@ -142,9 +137,7 @@ function About() {
         return (
             <Grid container justify="center" alignItems="center" className={`${classes.fullScreenWithHeaderHeight}`} id="aboutIntro">
                 <Grid xs={5} className={classes.introDesc}>
-                    <Typography variant="h1" className={`${classes.gradientText} ${classes.background}`}>
-                        Michelle Yong;
-                    </Typography>
+                    <ColoredHeader copy="Michelle Yong;" />
                     <Typography variant="h6" color="primary" className={`${classes.mb2} ${classes.mt5}`}>
                         THIS IS ME
                     </Typography>
@@ -166,7 +159,7 @@ function About() {
         return (
             <Grid container justify="center" alignItems="center" className={`${classes.background} ${classes.fullScreenHeight}`} id="aboutExpertise">
                 <Grid container item xs={8} justify="center" className={`${classes.hoverCursor}`}>
-                    <Typography variant="h2" className={`${classes.gradientText} ${classes.mb5}`}>Expertise</Typography>
+                    <ColoredHeader variant="h2" copy="Expertise" className={classes.mb5} />
                     <Typography variant="h3" className={`${classes.textAlignCenter}`}>{expertise}</Typography>
                     <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
                     <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
@@ -196,7 +189,7 @@ function About() {
             <Grid container justify="center" alignItems="center" className={classes.fullScreenHeight} id="aboutExperience">
                 <Grid container item xs={10} justify="center">
                     <Grid xs={12} className={classes.textAlignCenter}>
-                        <Typography variant="h2" className={`${classes.gradientText} ${classes.mb5}`}>Experience</Typography>
+                        <ColoredHeader variant="h2" copy="Experience" className={classes.mb5} />
                     </Grid>
                     {experiences.map(({name, duration, company, desc}) => renderExperienceItem(name, duration, company, desc))}
                 </Grid>
@@ -222,7 +215,7 @@ function About() {
             <Grid container justify="center" alignItems="center" className={classes.fullScreenHeight} id="aboutTools">
                 <Grid container item xs={10} justify="center">
                     <Grid xs={12} className={classes.textAlignCenter}>
-                        <Typography variant="h2" className={`${classes.gradientText} ${classes.mb5}`}>Tools</Typography>
+                        <ColoredHeader variant="h2" copy="Tools" className={classes.mb5} />
                     </Grid>
                     {tools.map(({name, toolList}) => renderToolItem(name, toolList))}
                 </Grid>

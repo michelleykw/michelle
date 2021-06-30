@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function MyButton({ content, onClick, icon, size = "large", variant, disabled = false }) {
+function MyButton({ content, onClick, icon, size = "large", variant, disabled = false, type = "button" }) {
     const classes = useStyles();
 
     return (
@@ -30,6 +30,7 @@ function MyButton({ content, onClick, icon, size = "large", variant, disabled = 
             variant={variant || "outlined"}
             startIcon={icon}
             onClick={onClick}
+            type={type}
             className={`${classes.button} ${classes[size]}`}
         >
             {content}
