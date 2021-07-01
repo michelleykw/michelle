@@ -97,7 +97,7 @@ const useStyles = makeStyles(theme => ({
 
 function Home() {
     const classes = useStyles();
-    let history = useHistory();
+    const history = useHistory();
 
     const [cursorX, setCursorX] = useState();
     const [cursorY, setCursorY] = useState();

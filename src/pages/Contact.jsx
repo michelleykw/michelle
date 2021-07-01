@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
-import { Field, Form, Formik } from 'formik';
+import axios from 'axios';
+import { Form, Formik } from 'formik';
+import slapform from 'slapform';
 import * as yup from 'yup';
 import ColoredHeader from '../components/ColoredHeader';
 import MyButton from '../components/MyButton';
 import SideBar from '../components/SideBar';
+import FormElement from '../form/FormElement';
 
 const useStyles = makeStyles(theme => ({
     content: {
@@ -13,7 +16,7 @@ const useStyles = makeStyles(theme => ({
         marginRight: "1.83%"
     },
     fullScreenHeight: {
-        height: "76vh"
+        height: "90vh"
     },
     textAlignCenter: {
         textAlign: "center"
@@ -21,9 +24,20 @@ const useStyles = makeStyles(theme => ({
     primaryColor: {
         color: theme.palette.primary.main
     },
-    my2: {
-        marginBottom: theme.spacing(2),
-        marginTop: theme.spacing(2)
+    mt2: {
+        marginTop: theme.spacing(2),
+    },
+    mt3: {
+        marginTop: theme.spacing(3),
+    },
+    negativeMt3: {
+        marginTop: -theme.spacing(3),
+    },
+    pl1: {
+        paddingLeft: theme.spacing(1)
+    },
+    pr1: {
+        paddingRight: theme.spacing(1)
     }
 }));
 
@@ -32,17 +46,50 @@ function Contact() {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     const initialValues = { 
-        first_name: null,
-        last_name: null,
-        email: null,
-        phone: null,
-        subject: null,
-        message: null
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: ""
     };
 
     const onSubmit = (values, actions) => {
-        console.log('onSubmit', values, actions);
-        setIsSubmitted(true);
+        // Both are not working right now ... Might have to build my own backend
+
+        // return slapform.submit({
+        //         account: 'michelle.designforher@gmail.com',
+        //         data: values
+        //     })
+        //     .success(function (response, data) {
+        //         console.log('Success!', response, data);
+        //         setIsSubmitted(true);
+        //     })
+        //     .error(function (response, error) {
+        //         console.log('Fail!', response, error);
+        //     })
+        //     .always(function (response) {
+        //         console.log('This always runs!', response);
+        // });
+
+        const formData = new FormData();
+        Object.entries(values).forEach(([key, value]) => {
+            formData.append(key, value)
+        });
+        return axios
+            .post(
+                "https://getform.io/f/79755cdf-fb74-4f4c-821e-3dbff16747ff",
+                formData,
+                { headers: { Accept: "application/json" } }
+            )
+            .then(res => {
+                console.log('successful', res);
+                setIsSubmitted(true);
+            })
+            .catch(err => {
+                console.log('error', err);
+            });
+        
     };
 
     const contactYupSchema = yup.object().shape({
@@ -56,7 +103,7 @@ function Contact() {
             .notRequired()
             .nullable(),
         email: yup.string().email('Invalid email').required('Email is required'),
-        phone: yup.number().notRequired().nullable(),
+        phone: yup.string().notRequired().nullable(),
         subject: yup.string()
             .min(1, 'Too Short!')
             .max(50, 'Too Long!')
@@ -69,7 +116,7 @@ function Contact() {
 
     const renderHeader = (header, subHeader ) => {
         return (
-            <Grid item xs={12} className={classes.my2}>
+            <Grid item xs={12} className={classes.mt3}>
                 <ColoredHeader copy={header} className={classes.textAlignCenter} />
                 <Typography variant="subtitle2" className={`${classes.textAlignCenter} ${classes.primaryColor}`}>
                     {subHeader}
@@ -81,14 +128,40 @@ function Contact() {
     const renderForm = formikBag => {
         return (
             <Form>
-                <Field name="firstName" type="text" placeholder="First Name" />
-                {formikBag.errors.firstName && <div id="firstNameError">{formikBag.errors.firstName}</div>}
-                <Field name="lastName" type="text" placeholder="Last Name" />
-                <Field name="email" type="email" placeholder="Email" />
-                <Field name="phone" />
-                <Field name="subject" type="text" placeholder="Subject" />
-                <Field name="message" type="text" placeholder="Message" component="textarea" />
-                <MyButton content="Submit" type="submit" />
+                <Grid container justify="center" alignItems="center" className={classes.negativeMt3}>
+                    <Grid container item xs={11} sm={10} lg={8}>
+                        <Grid container item justify="space-between">
+                            <Grid item xs={12} sm={6} className={classes.pr1}>
+                                <FormElement name="firstName" type="text" label="First Name" required />
+                            </Grid>
+                            {/*formikBag.errors.firstName && <div id="firstNameError">{formikBag.errors.firstName}</div>*/}
+                            <Grid item xs={12} sm={6} className={classes.pl1}>
+                                <FormElement name="lastName" type="text" label="Last Name" />
+                            </Grid>
+                        </Grid>
+                        <Grid container item justify="space-between">
+                            <Grid item xs={12} sm={6} className={classes.pr1}>
+                                <FormElement name="email" type="email" label="Email" required />
+                            </Grid>
+                            <Grid item xs={12} sm={6} className={classes.pl1}>
+                                <FormElement name="phone" label="Phone" />
+                            </Grid>
+                        </Grid>
+                        <Grid container item>
+                            <Grid item xs={12}>
+                                <FormElement name="subject" type="text" label="Subject" required />
+                            </Grid>
+                        </Grid>
+                        <Grid container item xs={12}>
+                            <Grid item xs={12}>
+                                <FormElement name="message" type="text" label="Message" control="textarea" required />
+                            </Grid>
+                        </Grid>
+                        <Grid container item justify="flex-end" className={classes.mt2}>
+                            <MyButton content="Submit" type="submit" />
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Form>
         );
     };
@@ -101,7 +174,7 @@ function Contact() {
                     {renderHeader("Thank you!", "I would do my best to get back to you in the next 24 hours. Have a great day!")}
                 </Grid>
             ) : (
-                <Grid container xs={11} className={`${classes.content} ${classes.textAlignCenter}`}>
+                <Grid container xs={11} justify="center" alignItems="center" className={`${classes.content} ${classes.textAlignCenter}`}>
                     {renderHeader("Get in Touch", "Hi there, I’m Michelle. Would like to get in touch with me? Simply fill up the form below.")}
                     <Grid item xs={12}>
                         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={contactYupSchema}>

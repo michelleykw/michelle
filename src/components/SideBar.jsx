@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
         maxWidth: "5%",
         borderRightStyle: 'solid',
         borderRightWidth: 1,
-        borderRightColor: theme.palette.text.primary,
+        borderRightColor: theme.palette.text.primary
     },
     leftBarValue: {
         transform: "rotate(270deg)",
