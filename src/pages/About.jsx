@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
+import ArrowDownwardRoundedIcon from '@material-ui/icons/ArrowDownwardRounded';
 import ColoredHeader from '../components/ColoredHeader';
+import ScrollToTop from '../components/ScrollToTop';
 import { experiences, expertise, tools } from '../resources/constants'
 
 const useStyles = makeStyles(theme => ({
@@ -90,6 +92,12 @@ const useStyles = makeStyles(theme => ({
     background: {
         backgroundColor: theme.palette.background.default
     },
+    outlineRounded: {
+        padding: theme.spacing(0.5),
+        fontSize: theme.spacing(5),
+        border: "1px solid",
+        borderRadius: theme.spacing(10)
+    },
     ul: {
         marginLeft: theme.spacing(4),
         marginRight: theme.spacing(4),
@@ -112,6 +120,9 @@ const useStyles = makeStyles(theme => ({
     mt5: {
         marginTop: theme.spacing(5)
     },
+    mt10: {
+        marginTop: theme.spacing(10)
+    },
     mx12: {
         marginLeft: theme.spacing(12),
         marginRight: theme.spacing(12)
@@ -125,6 +136,8 @@ const useStyles = makeStyles(theme => ({
 function About() {
     const classes = useStyles();
 
+    const experienceRef = useRef(null)
+
     const [cursorX, setCursorX] = useState();
     const [cursorY, setCursorY] = useState();
 
@@ -132,6 +145,13 @@ function About() {
         setCursorX(e.clientX);
         setCursorY(e.clientY);
     });
+
+    const scrollTo = (ref) => {
+        window.scroll({
+            top: ref.current.offsetTop,
+            behavior: "smooth",
+        });
+    }
 
     const renderIntro = () => {
         return (
@@ -144,6 +164,12 @@ function About() {
                     <Typography variant="subtitle1">
                         Hello there, nice to meet you! This is Michelle, a Year 4 NUS undergraduate, pursuing a Bachelor of Computing in Computer Science and a minor in Management. I enjoy design, product and development ♡
                     </Typography>
+                    <ArrowDownwardRoundedIcon 
+                        // fontSize="large" 
+                        color="primary" 
+                        className={`${classes.outlineRounded} ${classes.mt10}`} 
+                        onClick={() => scrollTo(experienceRef)}
+                    />
                 </Grid>
                 <Grid container item xs={5} justify="flex-end">
                     <img
@@ -157,7 +183,7 @@ function About() {
 
     const renderExpertise = () => {
         return (
-            <Grid container justify="center" alignItems="center" className={`${classes.background} ${classes.fullScreenHeight}`} id="aboutExpertise">
+            <Grid container justify="center" alignItems="center" className={`${classes.background} ${classes.fullScreenHeight}`} id="aboutExpertise" ref={experienceRef}>
                 <Grid container item xs={8} justify="center" className={`${classes.hoverCursor}`}>
                     <ColoredHeader variant="h2" copy="Expertise" className={classes.mb5} />
                     <Typography variant="h3" className={`${classes.textAlignCenter}`}>{expertise}</Typography>
@@ -229,6 +255,7 @@ function About() {
             {renderExpertise()}
             {renderExperience()}
             {renderTools()}
+            <ScrollToTop />
         </Grid>
     );
 }

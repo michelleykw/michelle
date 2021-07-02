@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 import MyButton from '../components/MyButton';
+import ScrollToTop from '../components/ScrollToTop';
 import { introduction } from '../resources/constants';
 import background from '../resources/background.png';
 import hero from '../resources/hero.png';
@@ -162,6 +163,7 @@ function Home() {
         <Grid container>
             {renderHeroBanner()}
             {renderIntro()}
+            <ScrollToTop />
         </Grid>
     );
 }

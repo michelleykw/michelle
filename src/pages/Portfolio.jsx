@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
+import ScrollToTop from '../components/ScrollToTop';
 import SideBar from '../components/SideBar';
 import MyButton from '../components/MyButton';
 
@@ -108,6 +109,7 @@ function Portfolio() {
     return (
         <Grid container>
             {portfolios.map(renderPortfolio)}
+            <ScrollToTop />
         </Grid>
     );
 }
