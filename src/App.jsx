@@ -19,11 +19,10 @@ function App() {
         <BrowserRouter>
           <Header />
           <Switch>
-            <Route path="/about" component={About} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/portfolio" component={Portfolio} />
-            <Route path="/michelle" component={Home} />
-            <Route exact path="/" component={Home} />
+            <Route exact path="/michelle/about" component={About} />
+            <Route exact path="/michelle/contact" component={Contact} />
+            <Route exact path="/michelle/portfolio" component={Portfolio} />
+            <Route exact path="/michelle" component={Home} />
             <Route component={NotFound} />
           </Switch>
           <Footer />

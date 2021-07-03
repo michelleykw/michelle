@@ -34,10 +34,10 @@ export const expertise = 'Web Design and Development, Full Stack Development, iO
 export const introduction = 'I’m Michelle, a Web Designer and Developer based in Singapore. Currently a final year student pursuing the Bachelor of Computing in Computer Science at NUS and was previously part of the NUS Overseas College Program. I have experience interning with Love, Bonito as a Product Intern and GoalsMapper as a Full Stack Developer.';
 
 export const pages = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/portfolio", label: "Portfolio" },
-    { href: "/contact", label: "Contact" },
+    { href: "/michelle", label: "Home" },
+    { href: "/michelle/about", label: "About" },
+    { href: "/michelle/portfolio", label: "Portfolio" },
+    { href: "/michelle/contact", label: "Contact" },
 ];
 
 export const socials = [

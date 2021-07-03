@@ -17,7 +17,15 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.text.primary,
         backgroundColor: theme.palette.background.default,
         border: "1px solid",
-        borderColor: theme.palette.primary.main
+        borderRadius: theme.spacing(0),
+        borderColor: theme.palette.primary.main,
+        '&:focus': {
+            outline: "none",
+            borderRadius: theme.spacing(0),
+            borderColor: theme.palette.primary[800],
+            backgroundColor: theme.palette.primary[50],
+            boxShadow: "0 0 4px #E2DEE5"
+        }
     }
 }));
 

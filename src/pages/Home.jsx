@@ -109,7 +109,7 @@ function Home() {
     });
 
     const goToContactMe = () => {
-        history.push("/contact");
+        history.push("/michelle/contact");
     }
 
     const getGreeting = () => {

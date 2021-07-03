@@ -68,7 +68,7 @@ function Header() {
     }, []);
 
     const goToHomePage = () => {
-        history.push("/");
+        history.push("/michelle");
     }
 
     const handleCloseDrawer = () => {

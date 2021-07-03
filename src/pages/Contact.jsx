@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
-import axios from 'axios';
+// import axios from 'axios';
 import { Form, Formik } from 'formik';
-import slapform from 'slapform';
+// import slapform from 'slapform';
 import * as yup from 'yup';
+import { db } from '../firebase.js';
 import ColoredHeader from '../components/ColoredHeader';
 import MyButton from '../components/MyButton';
 import SideBar from '../components/SideBar';
@@ -54,42 +55,15 @@ function Contact() {
         message: ""
     };
 
-    const onSubmit = (values, actions) => {
-        // Both are not working right now ... Might have to build my own backend
-
-        // return slapform.submit({
-        //         account: 'michelle.designforher@gmail.com',
-        //         data: values
-        //     })
-        //     .success(function (response, data) {
-        //         console.log('Success!', response, data);
-        //         setIsSubmitted(true);
-        //     })
-        //     .error(function (response, error) {
-        //         console.log('Fail!', response, error);
-        //     })
-        //     .always(function (response) {
-        //         console.log('This always runs!', response);
-        // });
-
-        const formData = new FormData();
-        Object.entries(values).forEach(([key, value]) => {
-            formData.append(key, value)
-        });
-        return axios
-            .post(
-                "https://getform.io/f/79755cdf-fb74-4f4c-821e-3dbff16747ff",
-                formData,
-                { headers: { Accept: "application/json" } }
-            )
-            .then(res => {
-                console.log('successful', res);
+    const onSubmit = (values) => {
+        db.collection("contacts")
+            .add(values)
+            .then(() => {
                 setIsSubmitted(true);
             })
             .catch(err => {
-                console.log('error', err);
+                // console.log('error', err);
             });
-        
     };
 
     const contactYupSchema = yup.object().shape({
