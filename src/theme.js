@@ -163,11 +163,11 @@ const settings = {
 
 if (window.innerWidth < 600) { // mobile
   settings.typography.h1.fontSize = "4rem";
-  settings.typography.h2.fontSize = "2.5rem";
-  settings.typography.h3.fontSize = "1.25rem";
-  settings.typography.h4.fontSize = "1.25rem";
-  settings.typography.h5.fontSize = "1.125rem";
-  settings.typography.h6.fontSize = "1.125rem";
+  settings.typography.h2.fontSize = "3rem";
+  settings.typography.h3.fontSize = "1.5rem";
+  settings.typography.h4.fontSize = "1.75rem";
+  settings.typography.h5.fontSize = "1.5rem";
+  settings.typography.h6.fontSize = "1.25rem";
   settings.typography.body1.fontSize = "1rem";
   settings.typography.body2.fontSize = "0.9375rem";
   settings.typography.body3.fontSize = "0.875rem";

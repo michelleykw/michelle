@@ -113,15 +113,34 @@ function Contact() {
                     <Grid container item xs={11} sm={10} lg={8}>
                         <Grid container item justify="space-between">
                             <Grid item xs={12} sm={6} className={atLeastScreenSmall && classes.pr1}>
-                                <FormElement name="firstName" type="text" label="First Name" hasError={touched.firstName && errors.firstName} required />
+                                <FormElement 
+                                    name="firstName" 
+                                    type="text" 
+                                    label="First Name" 
+                                    placeholder="Michelle"
+                                    hasError={touched.firstName && errors.firstName} 
+                                    required 
+                                />
                             </Grid>
                             <Grid item xs={12} sm={6} className={atLeastScreenSmall && classes.pl1}>
-                                <FormElement name="lastName" type="text" label="Last Name" />
+                                <FormElement 
+                                    name="lastName" 
+                                    type="text" 
+                                    label="Last Name" 
+                                    placeholder="Yong"
+                                />
                             </Grid>
                         </Grid>
                         <Grid container item justify="space-between">
                             <Grid item xs={12} sm={6} className={atLeastScreenSmall && classes.pr1}>
-                                <FormElement name="email" type="email" label="Email" hasError={touched.email && errors.email} required />
+                                <FormElement 
+                                    name="email" 
+                                    type="email" 
+                                    label="Email" 
+                                    placeholder="themichelleyong@gmail.com"
+                                    hasError={touched.email && errors.email} 
+                                    required 
+                                />
                             </Grid>
                             <Grid item xs={12} sm={6} className={atLeastScreenSmall && classes.pl1}>
                                 <FormElement name="phone" label="Phone" />
@@ -129,12 +148,26 @@ function Contact() {
                         </Grid>
                         <Grid container item>
                             <Grid item xs={12}>
-                                <FormElement name="subject" type="text" label="Subject" hasError={touched.subject && errors.subject} required />
+                                <FormElement 
+                                    name="subject" 
+                                    type="text" 
+                                    label="Subject"
+                                    hasError={touched.subject && errors.subject} 
+                                    required 
+                                />
                             </Grid>
                         </Grid>
                         <Grid container item xs={12}>
                             <Grid item xs={12}>
-                                <FormElement name="message" type="text" label="Message" control="textarea" hasError={touched.message && errors.message} required />
+                                <FormElement   
+                                    name="message" 
+                                    type="text" 
+                                    label="Message" 
+                                    control="textarea" 
+                                    placeholder="Leave me a message ♡"
+                                    hasError={touched.message && errors.message} 
+                                    required 
+                                />
                             </Grid>
                         </Grid>
                         <Grid container item justify={atLeastScreenSmall ? "flex-end": "center"} className={`${classes.mt2} ${classes.mb5}`}>

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Grid, Typography } from '@material-ui/core';
 import ArrowDownwardRoundedIcon from '@material-ui/icons/ArrowDownwardRounded';
 import ColoredHeader from '../components/ColoredHeader';
@@ -12,7 +13,7 @@ const useStyles = makeStyles(theme => ({
             padding: theme.spacing(4)
         },
         [theme.breakpoints.down('sm')]: {
-            padding: theme.spacing(3)
+            padding: theme.spacing(2)
         },
         [theme.breakpoints.down('xs')]: {
             padding: theme.spacing(2)
@@ -63,7 +64,7 @@ const useStyles = makeStyles(theme => ({
         textAlign: "center"
     },
     fullScreenHeight: {
-        height: "96vh"
+        minHeight: "96vh"
     },
     fullScreenWithHeaderHeight: {
         minHeight: "calc(100vh - 112px)"
@@ -85,8 +86,20 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up('sm')]: {
             paddingBottom: theme.spacing(4)
         },
+        [theme.breakpoints.down('md')]: {
+            width: "100%",
+            height: "auto"
+        }
+    },
+    introProfileMobile: {
+        height: theme.spacing(40),
+        width: theme.spacing(40),
+        objectFit: "cover",
+        borderRadius: theme.spacing(50),
+        margin: theme.spacing(3),
         [theme.breakpoints.down('xs')]: {
-            paddingBottom: theme.spacing(2)
+            height: theme.spacing(25),
+            width: theme.spacing(25),
         }
     },
     background: {
@@ -110,6 +123,9 @@ const useStyles = makeStyles(theme => ({
     },
     mb2: {
         marginBottom: theme.spacing(2)
+    },
+    mb3: {
+        marginBottom: theme.spacing(3)
     },
     mb5: {
         marginBottom: theme.spacing(5)
@@ -136,6 +152,9 @@ const useStyles = makeStyles(theme => ({
 function About() {
     const classes = useStyles();
 
+    const theme = useTheme();
+    const atLeastMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
+
     const experienceRef = useRef(null)
 
     const [cursorX, setCursorX] = useState();
@@ -156,27 +175,36 @@ function About() {
     const renderIntro = () => {
         return (
             <Grid container justify="center" alignItems="center" className={`${classes.fullScreenWithHeaderHeight}`} id="aboutIntro">
-                <Grid xs={5} className={classes.introDesc}>
-                    <ColoredHeader copy="Michelle Yong;" />
-                    <Typography variant="h6" color="primary" className={`${classes.mb2} ${classes.mt5}`}>
-                        THIS IS ME
-                    </Typography>
+                {!atLeastMediumScreen && (
+                    <img
+                        src="https://res.cloudinary.com/lovebonitointl/image/upload/q_auto,f_auto/v1624725942/profile.png"
+                        alt="profile" 
+                        className={classes.introProfileMobile} />
+                )}
+                <Grid item container justify={!atLeastMediumScreen && "center"} xs={11} sm={10} md={6} lg={5} className={`${classes.introDesc} ${!atLeastMediumScreen && classes.textAlignCenter}`}>
+                    <ColoredHeader copy="Michelle Yong;" className={classes.mb5} />
+                    {atLeastMediumScreen && (
+                        <Typography variant="h6" color="primary" className={`${classes.mb2}`}>
+                            THIS IS ME
+                        </Typography>
+                    )}
                     <Typography variant="subtitle1">
                         Hello there, nice to meet you! This is Michelle, a Year 4 NUS undergraduate, pursuing a Bachelor of Computing in Computer Science and a minor in Management. I enjoy design, product and development ♡
                     </Typography>
-                    <ArrowDownwardRoundedIcon 
-                        // fontSize="large" 
+                    <ArrowDownwardRoundedIcon
                         color="primary" 
                         className={`${classes.outlineRounded} ${classes.mt10}`} 
                         onClick={() => scrollTo(experienceRef)}
                     />
                 </Grid>
-                <Grid container item xs={5} justify="flex-end">
-                    <img
-                        src="https://res.cloudinary.com/lovebonitointl/image/upload/q_auto,f_auto/v1624725942/profile.png"
-                        alt="profile" 
-                        className={classes.introProfile} />
-                </Grid>
+                {atLeastMediumScreen && (
+                    <Grid container item sm={5} justify="flex-end">
+                        <img
+                            src="https://res.cloudinary.com/lovebonitointl/image/upload/q_auto,f_auto/v1624725942/profile.png"
+                            alt="profile" 
+                            className={classes.introProfile} />
+                    </Grid>
+                )}
             </Grid>
         );
     };
@@ -184,11 +212,15 @@ function About() {
     const renderExpertise = () => {
         return (
             <Grid container justify="center" alignItems="center" className={`${classes.background} ${classes.fullScreenHeight}`} id="aboutExpertise" ref={experienceRef}>
-                <Grid container item xs={8} justify="center" className={`${classes.hoverCursor}`}>
+                <Grid container item xs={8} justify="center" className={atLeastMediumScreen && classes.hoverCursor}>
                     <ColoredHeader variant="h2" copy="Expertise" className={classes.mb5} />
                     <Typography variant="h3" className={`${classes.textAlignCenter}`}>{expertise}</Typography>
-                    <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
-                    <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
+                    {atLeastMediumScreen && (
+                        <>
+                            <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
+                            <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
+                        </>
+                    )}
                 </Grid>
             </Grid>
         );
@@ -196,14 +228,14 @@ function About() {
 
     const renderExperienceItem = (name, duration, company, desc) => {
         return (
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
                 <Typography variant="h4" className={`${classes.textAlignCenter} ${classes.mb2}`}>
                     {name}
                 </Typography>
-                <Typography variant="subtitle1" className={`${classes.textAlignCenter} ${classes.mb5}`}>
+                <Typography variant="subtitle1" className={`${classes.textAlignCenter} ${atLeastMediumScreen ? classes.mb5 : classes.mb2}`}>
                     {`${duration} @ ${company}`}
                 </Typography>
-                <ul className={classes.ul}>
+                <ul className={`${classes.ul} ${classes.mb3}`}>
                     {desc.map(item => <li className={classes.li}>{item}</li>)}
                 </ul>
             </Grid>
@@ -213,9 +245,9 @@ function About() {
     const renderExperience = () => {
         return (
             <Grid container justify="center" alignItems="center" className={classes.fullScreenHeight} id="aboutExperience">
-                <Grid container item xs={10} justify="center">
+                <Grid container item xs={11} sm={10} justify="center">
                     <Grid xs={12} className={classes.textAlignCenter}>
-                        <ColoredHeader variant="h2" copy="Experience" className={classes.mb5} />
+                        <ColoredHeader variant="h2" copy="Experience" className={atLeastMediumScreen ? classes.mb5 : classes.mb3} />
                     </Grid>
                     {experiences.map(({name, duration, company, desc}) => renderExperienceItem(name, duration, company, desc))}
                 </Grid>
@@ -225,7 +257,7 @@ function About() {
 
     const renderToolItem = (name, toolList) => {
         return (
-            <Grid item xs={4} className={classes.px4}>
+            <Grid item xs={12} sm={6} md={4} className={atLeastMediumScreen && classes.px4}>
                 <Typography variant="h5" color="textSecondary" className={`${classes.textAlignCenter} ${classes.mb2}`}>
                     {name}
                 </Typography>
@@ -239,7 +271,7 @@ function About() {
     const renderTools = () => {
         return (
             <Grid container justify="center" alignItems="center" className={classes.fullScreenHeight} id="aboutTools">
-                <Grid container item xs={10} justify="center">
+                <Grid container item xs={11} sm={10} justify="center">
                     <Grid xs={12} className={classes.textAlignCenter}>
                         <ColoredHeader variant="h2" copy="Tools" className={classes.mb5} />
                     </Grid>

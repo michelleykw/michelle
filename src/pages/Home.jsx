@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import MyButton from '../components/MyButton';
 import ScrollToTop from '../components/ScrollToTop';
 import { introduction } from '../resources/constants';
@@ -88,6 +89,9 @@ const useStyles = makeStyles(theme => ({
         fontSize: theme.spacing(30),
         lineHeight: "100%"
     },
+    mb2: {
+        marginBottom: theme.spacing(2)
+    },
     mb4: {
         marginBottom: theme.spacing(4)
     },
@@ -99,6 +103,9 @@ const useStyles = makeStyles(theme => ({
 function Home() {
     const classes = useStyles();
     const history = useHistory();
+
+    const theme = useTheme();
+    const atLeastMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
 
     const [cursorX, setCursorX] = useState();
     const [cursorY, setCursorY] = useState();
@@ -146,12 +153,21 @@ function Home() {
 
     const renderIntro = () => {
         return (
-            <Grid container justify="center" alignItems="center" className={`${classes.fullScreenWithFooterHeight} ${classes.backgroundColor}`} id="homeIntro">
-                <Grid container item xs={8} justify="center">
-                    <Typography variant="h3" className={`${classes.textAlignCenter} ${classes.mb4} ${classes.hoverCursor}`}>
+            <Grid 
+                container 
+                justify="center" 
+                alignItems="center" c
+                className={`${classes.fullScreenWithFooterHeight} ${classes.backgroundColor}`} 
+                id="homeIntro">
+                <Grid container item xs={10} md={8} justify="center">
+                    <Typography variant="h3" className={`${classes.textAlignCenter} ${classes.mb4} ${atLeastMediumScreen && classes.hoverCursor}`}>
                         {introduction}
-                        <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
-                        <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
+                        {atLeastMediumScreen && (
+                            <>
+                                <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
+                                <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
+                            </>
+                        )}
                     </Typography>
                     <MyButton content="Contact Me" onClick={goToContactMe} />
                 </Grid>
