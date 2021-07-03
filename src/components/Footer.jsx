@@ -56,7 +56,7 @@ function Footer() {
             </Toolbar>
             <Toolbar className={classes.toolBar}>
               <Typography variant="body1" color="inherit">
-                © Jul 2020 by Michelle Yong.
+                © July 2021 by Michelle Yong.
               </Typography>
             </Toolbar>
         </AppBar>

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
-// import axios from 'axios';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Form, Formik } from 'formik';
-// import slapform from 'slapform';
 import * as yup from 'yup';
 import { db } from '../firebase.js';
 import ColoredHeader from '../components/ColoredHeader';
@@ -17,7 +16,7 @@ const useStyles = makeStyles(theme => ({
         marginRight: "1.83%"
     },
     fullScreenHeight: {
-        height: "90vh"
+        minHeight: "90vh"
     },
     textAlignCenter: {
         textAlign: "center"
@@ -25,14 +24,17 @@ const useStyles = makeStyles(theme => ({
     primaryColor: {
         color: theme.palette.primary.main
     },
+    mb5: {
+        marginBottom: theme.spacing(5)
+    },
     mt2: {
-        marginTop: theme.spacing(2),
+        marginTop: theme.spacing(2)
     },
     mt3: {
-        marginTop: theme.spacing(3),
+        marginTop: theme.spacing(3)
     },
-    negativeMt3: {
-        marginTop: -theme.spacing(3),
+    mt5: {
+        marginTop: theme.spacing(5)
     },
     pl1: {
         paddingLeft: theme.spacing(1)
@@ -44,6 +46,10 @@ const useStyles = makeStyles(theme => ({
 
 function Contact() {
     const classes = useStyles();
+
+    const theme = useTheme();
+    const atLeastScreenSmall = useMediaQuery(theme.breakpoints.up('sm'));
+
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     const initialValues = { 
@@ -100,38 +106,38 @@ function Contact() {
     };
 
     const renderForm = formikBag => {
+        const { touched, errors } = formikBag;
         return (
             <Form>
-                <Grid container justify="center" alignItems="center" className={classes.negativeMt3}>
+                <Grid container justify="center" alignItems="center">
                     <Grid container item xs={11} sm={10} lg={8}>
                         <Grid container item justify="space-between">
-                            <Grid item xs={12} sm={6} className={classes.pr1}>
-                                <FormElement name="firstName" type="text" label="First Name" required />
+                            <Grid item xs={12} sm={6} className={atLeastScreenSmall && classes.pr1}>
+                                <FormElement name="firstName" type="text" label="First Name" hasError={touched.firstName && errors.firstName} required />
                             </Grid>
-                            {/*formikBag.errors.firstName && <div id="firstNameError">{formikBag.errors.firstName}</div>*/}
-                            <Grid item xs={12} sm={6} className={classes.pl1}>
+                            <Grid item xs={12} sm={6} className={atLeastScreenSmall && classes.pl1}>
                                 <FormElement name="lastName" type="text" label="Last Name" />
                             </Grid>
                         </Grid>
                         <Grid container item justify="space-between">
-                            <Grid item xs={12} sm={6} className={classes.pr1}>
-                                <FormElement name="email" type="email" label="Email" required />
+                            <Grid item xs={12} sm={6} className={atLeastScreenSmall && classes.pr1}>
+                                <FormElement name="email" type="email" label="Email" hasError={touched.email && errors.email} required />
                             </Grid>
-                            <Grid item xs={12} sm={6} className={classes.pl1}>
+                            <Grid item xs={12} sm={6} className={atLeastScreenSmall && classes.pl1}>
                                 <FormElement name="phone" label="Phone" />
                             </Grid>
                         </Grid>
                         <Grid container item>
                             <Grid item xs={12}>
-                                <FormElement name="subject" type="text" label="Subject" required />
+                                <FormElement name="subject" type="text" label="Subject" hasError={touched.subject && errors.subject} required />
                             </Grid>
                         </Grid>
                         <Grid container item xs={12}>
                             <Grid item xs={12}>
-                                <FormElement name="message" type="text" label="Message" control="textarea" required />
+                                <FormElement name="message" type="text" label="Message" control="textarea" hasError={touched.message && errors.message} required />
                             </Grid>
                         </Grid>
-                        <Grid container item justify="flex-end" className={classes.mt2}>
+                        <Grid container item justify={atLeastScreenSmall ? "flex-end": "center"} className={`${classes.mt2} ${classes.mb5}`}>
                             <MyButton content="Submit" type="submit" />
                         </Grid>
                     </Grid>
@@ -141,19 +147,21 @@ function Contact() {
     };
 
     return (
-        <Grid container className={classes.fullScreenHeight}>
-            <SideBar copy="Currently seeking internship opportunities as a Product Manager or UI/UX Designer" />
+        <Grid justify="center" container className={classes.fullScreenHeight}>
+            {atLeastScreenSmall && <SideBar copy="Currently seeking internship opportunities as a Product Manager or UI/UX Designer" />}
             {isSubmitted ? (
-                <Grid container xs={11} justify="center" alignItems="center" className={`${classes.content} ${classes.textAlignCenter}`}>
+                <Grid container item xs={11} justify="center" alignItems="center" className={`${classes.content} ${classes.textAlignCenter}`}>
                     {renderHeader("Thank you!", "I would do my best to get back to you in the next 24 hours. Have a great day!")}
                 </Grid>
             ) : (
-                <Grid container xs={11} justify="center" alignItems="center" className={`${classes.content} ${classes.textAlignCenter}`}>
-                    {renderHeader("Get in Touch", "Hi there, I’m Michelle. Would like to get in touch with me? Simply fill up the form below.")}
-                    <Grid item xs={12}>
-                        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={contactYupSchema}>
-                            {formikBag => renderForm(formikBag)}
-                        </Formik>
+                <Grid container item xs={11} justify="center" alignItems="center" className={`${classes.content} ${classes.textAlignCenter}`}>
+                    <Grid container>
+                        {renderHeader("Get in Touch", "Hi there, I’m Michelle. Would like to get in touch with me? Simply fill up the form below.")}
+                        <Grid item xs={12} className={atLeastScreenSmall ? classes.mt5 : classes.mt2}>
+                            <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={contactYupSchema}>
+                                {formikBag => renderForm(formikBag)}
+                            </Formik>
+                        </Grid>
                     </Grid>
                 </Grid>
             )}

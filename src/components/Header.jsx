@@ -41,6 +41,7 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(9)
     },
     michelle: {
+        fontSize: "3rem",
         cursor: "pointer"
     }
 }));

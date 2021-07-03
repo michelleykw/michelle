@@ -1,7 +1,8 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import { Field } from 'formik';
+import { ErrorMessage, Field } from 'formik';
 import { makeStyles } from '@material-ui/core/styles';
+import ErrorComponent from './ErrorComponent';
 
 const useStyles = makeStyles(theme => ({
     formControl: {
@@ -26,18 +27,31 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: theme.palette.primary[50],
             boxShadow: "0 0 4px #E2DEE5"
         }
+    },
+    hasError: {
+        color: theme.palette.error.main,
+        borderColor: theme.palette.error.main,
+        '&:focus': {
+            borderColor: theme.palette.error.dark,
+            backgroundColor: theme.palette.error[50],
+            boxShadow: "0 0 4px #FEF8F8"
+        }
     }
 }));
 
 function Input(props) {
-    const { label, name, placeholder, required = false, ...rest } = props;
+    const { label, name, placeholder, required = false, hasError = false, ...rest } = props;
     const classes = useStyles();
 
     return (
         <Grid container item className={classes.formControl} justitfy="flex-start">
-            <label htmlFor={name}>{`${label}${required ? ' *' : ''}`}</label>
-            <Field id={name} name={name} placeholder={placeholder} className={classes.component} {...rest} />
-            {/*<ErrorMessage component={TextError} name={name} />*/}
+            <Grid container item xs={12} justify="space-between">
+                <Grid item>
+                    <label htmlFor={name} className={hasError && classes.hasError}>{`${label}${required ? ' *' : ''}`}</label>
+                </Grid>
+                <ErrorMessage name={name} component={ErrorComponent} />
+            </Grid>
+            <Field id={name} name={name} placeholder={placeholder} className={`${classes.component} ${hasError && classes.hasError}`} {...rest} />
         </Grid>
     );
 }

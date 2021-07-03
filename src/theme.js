@@ -1,6 +1,15 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 
-export const theme = createMuiTheme({
+const settings = {
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920
+    },
+  },
   shadows: ["none"],
   palette: {
     common: {
@@ -65,6 +74,7 @@ export const theme = createMuiTheme({
       dark: "#A11819",
       main: "#C91E1F",
       light: "#F8E4E4",
+      50: '#FEF8F8',
       contrastText: "#FAFAFA"
     }
   },
@@ -149,4 +159,25 @@ export const theme = createMuiTheme({
     fontFamily: "\"Merriweather\", serif",
     fontWeightBold: 600,
   }
-});
+};
+
+if (window.innerWidth < 600) { // mobile
+  settings.typography.h1.fontSize = "4rem";
+  settings.typography.h2.fontSize = "2.5rem";
+  settings.typography.h3.fontSize = "1.25rem";
+  settings.typography.h4.fontSize = "1.25rem";
+  settings.typography.h5.fontSize = "1.125rem";
+  settings.typography.h6.fontSize = "1.125rem";
+  settings.typography.body1.fontSize = "1rem";
+  settings.typography.body2.fontSize = "0.9375rem";
+  settings.typography.body3.fontSize = "0.875rem";
+  settings.typography.subtitle1.fontSize = "1.125rem";
+  settings.typography.subtitle2.fontSize = "0.9375rem";
+  settings.typography.button.fontSize = "0.875remrem";
+} else if (window.innerWidth < 1024) { // tablets
+  settings.typography.h1.fontSize = "7rem";
+  settings.typography.h2.fontSize = "5rem";
+  settings.typography.h3.fontSize = "2.5rem";
+}
+
+export const theme = createMuiTheme(settings);
