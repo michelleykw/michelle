@@ -4,7 +4,6 @@ import { Grid, Typography } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
-import { db } from '../firebase.js';
 import ColoredHeader from '../components/ColoredHeader';
 import MyButton from '../components/MyButton';
 import SideBar from '../components/SideBar';
@@ -62,14 +61,7 @@ function Contact() {
     };
 
     const onSubmit = (values) => {
-        db.collection("contacts")
-            .add(values)
-            .then(() => {
-                setIsSubmitted(true);
-            })
-            .catch(err => {
-                // console.log('error', err);
-            });
+        console.log(values);
     };
 
     const contactYupSchema = yup.object().shape({
