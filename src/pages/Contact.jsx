@@ -4,6 +4,7 @@ import { Grid, Typography } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
+import { useFormspark } from "@formspark/use-formspark";
 import ColoredHeader from '../components/ColoredHeader';
 import MyButton from '../components/MyButton';
 import SideBar from '../components/SideBar';
@@ -60,8 +61,25 @@ function Contact() {
         message: ""
     };
 
-    const onSubmit = (values) => {
-        console.log(values);
+    const FORMSPARK_FORM_ID = "04xYo1GC";
+    const [submit, submitting] = useFormspark({
+        formId: FORMSPARK_FORM_ID,
+      });
+
+    const onSubmit = async (values) => {
+        try {
+            await submit({
+                'First Name': values.firstName,
+                'Last Name': values.lastName,
+                'Email': values.email,
+                'Mobile': values.phone,
+                'Subject': values.subject,
+                'Message': values.message
+            });
+            setIsSubmitted(true);
+        } catch(err) {
+            console.log("ERROR!", err);
+        }
     };
 
     const contactYupSchema = yup.object().shape({
@@ -163,7 +181,7 @@ function Contact() {
                             </Grid>
                         </Grid>
                         <Grid container item justify={atLeastScreenSmall ? "flex-end": "center"} className={`${classes.mt2} ${classes.mb5}`}>
-                            <MyButton content="Submit" type="submit" />
+                            <MyButton content="Submit" type="submit" disabled={submitting} />
                         </Grid>
                     </Grid>
                 </Grid>
