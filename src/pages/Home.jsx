@@ -6,7 +6,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import MyButton from '../components/MyButton';
 import ScrollToTop from '../components/ScrollToTop';
 import PortfolioItem from '../components/PortfolioItem';
-import { introduction, portfolios} from '../resources/constants';
+import { introduction, portfolios, resumeUrl } from '../resources/constants';
 import background from '../resources/background.png';
 import hero from '../resources/hero.svg';
 
@@ -91,12 +91,16 @@ const useStyles = makeStyles(theme => ({
     },
     mb4: {
         marginBottom: theme.spacing(4)
+    },
+    mx2: {
+        marginLeft: theme.spacing(2),
+        marginRight: theme.spacing(2)
     }
 }));
 
 function Home() {
     const classes = useStyles();
-
+    const history = useHistory();
     const theme = useTheme();
     const atLeastMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
 
@@ -108,12 +112,9 @@ function Home() {
         setCursorY(e.clientY);
     });
 
-    const viewResume = () => {
-        window.open(
-            'https://drive.google.com/file/d/1Ri3-7eHY_XVpla0tu-x9PceQflMFlKVE/view?usp=sharing',
-            '_blank'
-        );
-    };
+    const viewResume = () => window.open(resumeUrl,'_blank');
+
+    const goToAbout = () => history.push('/michelle/about');
 
     const getGreeting = () => {
         const today = new Date();
@@ -180,12 +181,15 @@ function Home() {
                 <Grid container item justify="center">
                     {portfolios.map(item => <PortfolioItem item={item} />)}
                     {atLeastMediumScreen && (
-                        <>
+                        <Grid>
                             <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
                             <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
-                        </>
+                        </Grid>
                     )}
-                    <MyButton content="View Resume" onClick={viewResume} className={classes.mb4}/>
+                    <Grid container justify="center" className={classes.mb2}>
+                        <MyButton content="View Resume" onClick={viewResume} className={`${classes.mx2} ${classes.mb2}`}/>
+                        <MyButton content="About Me" onClick={goToAbout} className={`${classes.mx2} ${classes.mb2}`}/>
+                    </Grid>
                 </Grid>
             </Grid>
         );

@@ -1,11 +1,14 @@
 import React, { useRef, useState } from 'react';
+import { useHistory } from "react-router-dom";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Grid, Typography } from '@material-ui/core';
 import ArrowDownwardRoundedIcon from '@material-ui/icons/ArrowDownwardRounded';
 import ColoredHeader from '../components/ColoredHeader';
+import MyButton from '../components/MyButton';
 import ScrollToTop from '../components/ScrollToTop';
-import { cca, education, experiences, expertise, tools } from '../resources/constants'
+import profile from '../resources/profile.jpg';
+import { cca, education, experiences, expertise, resumeUrl, tools } from '../resources/constants';
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -106,8 +109,8 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.background.default
     },
     outlineRounded: {
-        padding: theme.spacing(0.5),
-        fontSize: theme.spacing(5),
+        padding: theme.spacing(1),
+        fontSize: theme.spacing(6),
         border: "1px solid",
         borderRadius: theme.spacing(10)
     },
@@ -142,9 +145,16 @@ const useStyles = makeStyles(theme => ({
     mt10: {
         marginTop: theme.spacing(10)
     },
+    mx2: {
+        marginLeft: theme.spacing(2),
+        marginRight: theme.spacing(2)
+    },
     mx12: {
         marginLeft: theme.spacing(12),
         marginRight: theme.spacing(12)
+    },
+    pt2: {
+        paddingTop: theme.spacing(2)
     },
     px2: {
         paddingLeft: theme.spacing(2),
@@ -158,11 +168,11 @@ const useStyles = makeStyles(theme => ({
 
 function About() {
     const classes = useStyles();
-
+    const history = useHistory();
     const theme = useTheme();
     const atLeastMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
 
-    const experienceRef = useRef(null)
+    const experienceRef = useRef(null);
 
     const [cursorX, setCursorX] = useState();
     const [cursorY, setCursorY] = useState();
@@ -181,10 +191,10 @@ function About() {
 
     const renderIntro = () => {
         return (
-            <Grid container justify="center" alignItems="center" className={`${classes.fullScreenWithHeaderHeight}`} id="aboutIntro">
+            <Grid container justify="space-evenly" alignItems="center" className={`${classes.fullScreenWithHeaderHeight}`} id="aboutIntro">
                 {!atLeastMediumScreen && (
                     <img
-                        src="https://res.cloudinary.com/lovebonitointl/image/upload/q_auto,f_auto/v1624725942/profile.png"
+                        src={profile}
                         alt="profile" 
                         className={classes.introProfileMobile} />
                 )}
@@ -196,7 +206,7 @@ function About() {
                         </Typography>
                     )}
                     <Typography variant="subtitle1">
-                        Hello there, nice to meet you! This is Michelle, a Year 4 NUS undergraduate, pursuing a Bachelor of Computing in Computer Science and a minor in Management. I enjoy design, product and development ♡
+                        Hello there, nice to meet you! This is Michelle, a Year 4 NUS undergraduate, pursuing a Bachelor of Computing in Computer Science with a minor in Management. I enjoy understanding the needs of people and coming up with tech solutions to address them. Product, Design, Development and Analysis drive my purpose in life ♡
                     </Typography>
                     <ArrowDownwardRoundedIcon
                         color="primary" 
@@ -207,7 +217,7 @@ function About() {
                 {atLeastMediumScreen && (
                     <Grid container item sm={5} justify="flex-end">
                         <img
-                            src="https://res.cloudinary.com/lovebonitointl/image/upload/q_auto,f_auto/v1624725942/profile.png"
+                            src={profile}
                             alt="profile" 
                             className={classes.introProfile} />
                     </Grid>
@@ -253,8 +263,8 @@ function About() {
         return (
             <Grid container justify="center" alignItems="center" className={classes.fullScreenHeight} id="aboutExperience">
                 <Grid container item xs={11} sm={10} md={8} lg={6} justify="center">
-                    <Grid xs={12} className={classes.textAlignCenter}>
-                        <ColoredHeader variant="h2" copy="Experience" className={atLeastMediumScreen ? classes.mb5 : classes.mb3} />
+                    <Grid xs={12} className={`${classes.textAlignCenter}`}>
+                        <ColoredHeader variant="h2" copy="Experience" className={`${atLeastMediumScreen ? classes.mb5 : classes.mb3}`} />
                     </Grid>
                     {experiences.map(({name, duration, company, desc}) => renderExperienceItem(name, duration, company, desc))}
                 </Grid>
@@ -352,6 +362,9 @@ function About() {
         );
     };
 
+    const viewResume = () => window.open(resumeUrl,'_blank');
+    const goToPortfolio = () => history.push('/michelle/portfolio');
+
     return (
         <Grid container className={classes.container}>
             {renderIntro()}
@@ -360,6 +373,10 @@ function About() {
             {renderTools()}
             {renderEducation()}
             {renderCca()}
+            <Grid container justify="center" className={`${classes.pt2}`}>
+                <MyButton content="View Resume" onClick={viewResume} className={`${classes.mx2} ${classes.mb2}`}/>
+                <MyButton content="View Portfolio" onClick={goToPortfolio} className={`${classes.mx2} ${classes.mb2}`}/>
+            </Grid>
             <ScrollToTop />
         </Grid>
     );

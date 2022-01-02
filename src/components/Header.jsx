@@ -30,12 +30,19 @@ const useStyles = makeStyles(theme => ({
         fontSize: '1.125rem',
         [theme.breakpoints.up('sm')]: {
             marginLeft: theme.spacing(2),
-            marginRight: theme.spacing(2)
+            marginRight: theme.spacing(2),
+            paddingLeft: theme.spacing(2),
+            paddingRight: theme.spacing(2)
         },
         [theme.breakpoints.down('xs')]: {
             marginTop: theme.spacing(2),
             marginBottom: theme.spacing(2)
-        }
+        },
+        borderRadius: theme.spacing(5)
+    },
+    navButtonCurrent: {
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(3)
     },
     drawer: {
         padding: theme.spacing(9)
@@ -55,7 +62,7 @@ function Header() {
 
     useEffect(() => {
         const setResponsiveness = () => {
-            if (window.innerWidth < 480) {
+            if (window.innerWidth < 640) {
                 setIsMobileView(true);
             } else {
                 setIsMobileView(false);
@@ -81,9 +88,10 @@ function Header() {
             <Button
                 component={Link}
                 to={href}
+                variant={location.pathname === href ? "contained" : "text"}
                 color={location.pathname === href ? "primary" : "textPrimary"}
                 onClick={isMobile && handleCloseDrawer}
-                className={classes.navButton}
+                className={`${classes.navButton} ${location.pathname === href && classes.navButtonCurrent}`}
             >
                 {label}
             </Button>
@@ -100,14 +108,14 @@ function Header() {
 
     const renderMobileDisplay = () => {
         return (
-            <>
+            <Grid>
                 <IconButton onClick={() => setIsDrawerOpen(true)}>
                     <MenuIcon fontSize="large" color="primary" />
                 </IconButton>
                 <SwipeableDrawer anchor="right" open={isDrawerOpen} onClose={handleCloseDrawer}>
                     {renderDrawerOptions()}
                 </SwipeableDrawer>
-            </>
+            </Grid>
         );
     };
 

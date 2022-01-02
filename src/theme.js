@@ -125,7 +125,7 @@ const settings = {
     body2: {
       fontSize: "0.9375rem",
       fontWeight: 400,
-      lineHeight: 1.6,
+      lineHeight: 1,// 1.6
       letterSpacing: "2%"
     },
     body3: {
@@ -167,7 +167,7 @@ if (window.innerWidth < 600) { // mobile
   settings.typography.h3.fontSize = "1.5rem";
   settings.typography.h4.fontSize = "1.75rem";
   settings.typography.h5.fontSize = "1.5rem";
-  settings.typography.h6.fontSize = "1.25rem";
+  settings.typography.h6.fontSize = "1.0625rem";
   settings.typography.body1.fontSize = "1rem";
   settings.typography.body2.fontSize = "0.9375rem";
   settings.typography.body3.fontSize = "0.875rem";

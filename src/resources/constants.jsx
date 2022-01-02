@@ -3,59 +3,75 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import EmailIcon from '@material-ui/icons/Email';
-import hero from '../resources/hero.svg';
+import roomi from '../resources/portfolio/roomi.svg';
+import nusreg from '../resources/portfolio/nusreg.png';
+import lb_laptop_ab1 from '../resources/portfolio/lb_laptop_ab1.png';
+import lb_laptop_ab2 from '../resources/portfolio/lb_laptop_ab2.png';
+import lb_mobile_ab from '../resources/portfolio/lb_mobile_ab.png';
+import lb_mobile_checkout1 from '../resources/portfolio/lb_mobile_checkout1.png';
+import lb_mobile_checkout2 from '../resources/portfolio/lb_mobile_checkout2.png';
+import lb_mobile_checkout3 from '../resources/portfolio/lb_mobile_checkout3.png';
+import lb_mobile_checkout4 from '../resources/portfolio/lb_mobile_checkout4.png';
+import odsv1 from '../resources/portfolio/odsv1.png';
+import odsv2 from '../resources/portfolio/odsv2.png';
+import nhouse1 from '../resources/portfolio/nhouse1.png';
+import nhouse2 from '../resources/portfolio/nhouse2.png';
+import nhouse3 from '../resources/portfolio/nhouse3.png';
+import mivpay from '../resources/portfolio/mivpay.svg';
+
+
+export const resumeUrl = 'https://drive.google.com/file/d/1Ri3-7eHY_XVpla0tu-x9PceQflMFlKVE/view?usp=sharing';
 
 export const portfolios = [
     {
         category: 'UI/UX Design',
         isHighlight: true,
         name: 'Roomi',
+        duration: 'Aug 2020 - Dec 2020',
         desc: 'Designed a mobile application for the purpose of finding an ideal house mate from the perspective of a person who has a space to live, as well as that looking for a place to live.',
-        imageHref: 'https://mb.com.ph/wp-content/uploads/2021/02/youth2-1.jpg'
+        imageHref: [roomi]
     },
     {
         category: 'UI/UX Design',
         isHighlight: true,
         name: 'NUSReg',
+        duration: 'Aug 2020 - Dec 2020',
         desc: 'Redesign of the NUS EduReg, a module registration platform used by students in NUS, through a series of user study.',
-        imageHref: hero //
+        imageHref: [nusreg]
     },
     {
         category: 'Product',
         isHighlight: true,
         name: 'MivPay',
+        duration: 'Jan 2021 - Jul 2021',
         desc: 'Conducted user interviews and designed mockup to allow users to share reviews on purchases for cashback.',
-        imageHref: ''
+        imageHref: [mivpay]
     },
     {
         category: 'UI/UX Design',
         isHighlight: true,
         name: 'Love, Bonito',
+        duration: 'Aug 2020 - Jan 2021',
         desc: 'UI/UX and icon designs for minimum checkout for free delivery and media mention.',
-        imageHref: hero //
+        imageHref: [lb_mobile_ab, lb_mobile_checkout1, lb_laptop_ab2, lb_mobile_checkout2, lb_laptop_ab1, lb_mobile_checkout3, lb_mobile_checkout4]
     },
     {
         category: 'Social Media Collaterals',
         isHighlight: false,
         name: 'NUSSU Open Day 2020',
+        duration: '',
         desc: 'Designed collaterals used on the NUSSU social media accounts for the publicity leading up to the NUS e-Open House & Student Life talks 2020.',
         website: '',
-        imageHref: ''
+        imageHref: [odsv1, odsv2]
     },
     {
         category: 'Social Media Collaterals',
         isHighlight: true,
         name: 'Enterprise House (N-House)',
+        duration: 'Nov 2019 - Mar 2020',
         desc: 'Designed collaterals used on the N-House social media accounts, Telegram channel and email blast to publicise the Wicked Wednesdays events and 10 Year Anniversary.',
-        imageHref: ''
-    },
-    {
-        category: 'Development',
-        isHighlight: false,
-        name: 'E-Auction',
-        desc: 'Implemented website for auctioning, based on microservices architecture using React, NodeJS and MongoDB.',
-        imageHref: ''
-    },
+        imageHref: [nhouse2, nhouse3, nhouse1]
+    }
 ];
 
 export const experiences = [
@@ -116,7 +132,7 @@ export const education = [
     }
 ];
 
-export const expertise = 'Product Management, Web Design and Development, Full Stack Development, Project Management, UI/UX';
+export const expertise = 'Product Management, Web Design and Development, Full Stack Development, Project Management, UI/UX Design';
 
 export const introduction = "Hello, I’m Michelle, a final year NUS Computer Science student! Currently actively looking for roles as an Associate Product Manager in the tech industry. I have experience interning with Love, Bonito as a Product Intern and GoalsMapper as a Full Stack Developer.";
 
