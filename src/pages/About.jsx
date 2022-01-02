@@ -5,7 +5,7 @@ import { Grid, Typography } from '@material-ui/core';
 import ArrowDownwardRoundedIcon from '@material-ui/icons/ArrowDownwardRounded';
 import ColoredHeader from '../components/ColoredHeader';
 import ScrollToTop from '../components/ScrollToTop';
-import { experiences, expertise, tools } from '../resources/constants'
+import { cca, education, experiences, expertise, tools } from '../resources/constants'
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -121,6 +121,9 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.text.secondary,
         paddingBottom: theme.spacing(2)
     },
+    mb1: {
+        marginBottom: theme.spacing(1)
+    },
     mb2: {
         marginBottom: theme.spacing(2)
     },
@@ -142,6 +145,10 @@ const useStyles = makeStyles(theme => ({
     mx12: {
         marginLeft: theme.spacing(12),
         marginRight: theme.spacing(12)
+    },
+    px2: {
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2)
     },
     px4: {
         paddingLeft: theme.spacing(4),
@@ -213,13 +220,13 @@ function About() {
         return (
             <Grid container justify="center" alignItems="center" className={`${classes.background} ${classes.fullScreenHeight}`} id="aboutExpertise" ref={experienceRef}>
                 <Grid container item xs={8} justify="center" className={atLeastMediumScreen && classes.hoverCursor}>
-                    <ColoredHeader variant="h2" copy="Expertise" className={classes.mb5} />
+                    <ColoredHeader variant="h2" copy="Expertise" className={atLeastMediumScreen ? classes.mb5 : classes.mb3} />
                     <Typography variant="h3" className={`${classes.textAlignCenter}`}>{expertise}</Typography>
                     {atLeastMediumScreen && (
-                        <>
+                        <Grid>
                             <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
                             <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
-                        </>
+                        </Grid>
                     )}
                 </Grid>
             </Grid>
@@ -228,14 +235,14 @@ function About() {
 
     const renderExperienceItem = (name, duration, company, desc) => {
         return (
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12}>
                 <Typography variant="h4" className={`${classes.textAlignCenter} ${classes.mb2}`}>
                     {name}
                 </Typography>
-                <Typography variant="subtitle1" className={`${classes.textAlignCenter} ${atLeastMediumScreen ? classes.mb5 : classes.mb2}`}>
+                <Typography variant="subtitle1" className={`${classes.textAlignCenter} ${atLeastMediumScreen ? classes.mb3 : classes.mb2}`}>
                     {`${duration} @ ${company}`}
                 </Typography>
-                <ul className={`${classes.ul} ${classes.mb3}`}>
+                <ul className={`${classes.ul} ${atLeastMediumScreen ? classes.mb5 : classes.mb3}`}>
                     {desc.map(item => <li className={classes.li}>{item}</li>)}
                 </ul>
             </Grid>
@@ -245,7 +252,7 @@ function About() {
     const renderExperience = () => {
         return (
             <Grid container justify="center" alignItems="center" className={classes.fullScreenHeight} id="aboutExperience">
-                <Grid container item xs={11} sm={10} justify="center">
+                <Grid container item xs={11} sm={10} md={8} lg={6} justify="center">
                     <Grid xs={12} className={classes.textAlignCenter}>
                         <ColoredHeader variant="h2" copy="Experience" className={atLeastMediumScreen ? classes.mb5 : classes.mb3} />
                     </Grid>
@@ -257,11 +264,11 @@ function About() {
 
     const renderToolItem = (name, toolList) => {
         return (
-            <Grid item xs={12} sm={6} md={4} className={atLeastMediumScreen && classes.px4}>
-                <Typography variant="h5" color="textSecondary" className={`${classes.textAlignCenter} ${classes.mb2}`}>
+            <Grid item xs={12} sm={6} md={4} className={atLeastMediumScreen ? classes.px4 : classes.px2}>
+                <Typography variant="h5" color="textSecondary" className={`${classes.textAlignCenter} ${atLeastMediumScreen ? classes.mb2 : classes.mb1}`}>
                     {name}
                 </Typography>
-                <Typography variant="subtitle1" className={`${classes.textAlignCenter} ${classes.mb6}`}>
+                <Typography variant="subtitle1" className={`${classes.textAlignCenter} ${atLeastMediumScreen ? classes.mb6 : classes.mb3 }`}>
                     {toolList.join(', ')}
                 </Typography>
             </Grid>
@@ -273,9 +280,73 @@ function About() {
             <Grid container justify="center" alignItems="center" className={classes.fullScreenHeight} id="aboutTools">
                 <Grid container item xs={11} sm={10} justify="center">
                     <Grid xs={12} className={classes.textAlignCenter}>
-                        <ColoredHeader variant="h2" copy="Tools" className={classes.mb5} />
+                        <ColoredHeader variant="h2" copy="Tools" className={atLeastMediumScreen ? classes.mb5 : classes.mb3} />
                     </Grid>
                     {tools.map(({name, toolList}) => renderToolItem(name, toolList))}
+                </Grid>
+            </Grid>
+        );
+    };
+
+    const renderEducationItem = (school, degree, duration, desc) => {
+        return (
+            <Grid item xs={12}>
+                <Typography variant="h4" className={`${classes.textAlignCenter} ${classes.mb2}`}>
+                    {school}
+                </Typography>
+                <Typography variant="subtitle1" className={`${classes.textAlignCenter} ${classes.mb1}`}>
+                    {`${degree}`}
+                </Typography>
+                <Typography variant="subtitle2" className={`${classes.textAlignCenter} ${atLeastMediumScreen ? classes.mb3 : classes.mb2}`}>
+                    {`${duration}`}
+                </Typography>
+                <ul className={`${classes.ul} ${classes.mb3}`}>
+                    {desc.map(item => <li className={classes.li}>{item}</li>)}
+                </ul>
+            </Grid>
+        );
+    };
+
+    const renderEducation = () => {
+        return (
+            <Grid container justify="center" alignItems="center" className={classes.fullScreenHeight} id="aboutEducation">
+                <Grid container item xs={11} sm={10} md={8} lg={6} justify="center">
+                    <Grid xs={12} className={classes.textAlignCenter}>
+                        <ColoredHeader variant="h2" copy="Education" className={atLeastMediumScreen ? classes.mb5 : classes.mb3} />
+                    </Grid>
+                    {education.map(({school, degree, duration, desc}) => renderEducationItem(school, degree, duration, desc))}
+                </Grid>
+            </Grid>
+        );
+    };
+
+    const renderCcaItem = (cca, name, duration, desc) => {
+        return (
+            <Grid item xs={12}>
+                <Typography variant="h4" className={`${classes.textAlignCenter} ${classes.mb2}`}>
+                    {cca}
+                </Typography>
+                <Typography variant="subtitle1" className={`${classes.textAlignCenter} ${classes.mb1}`}>
+                    {name}
+                </Typography>
+                <Typography variant="subtitle2" className={`${classes.textAlignCenter} ${atLeastMediumScreen ? classes.mb3 : classes.mb2}`}>
+                    {`${duration}`}
+                </Typography>
+                <ul className={`${classes.ul} ${classes.mb3}`}>
+                    {desc.map(item => <li className={classes.li}>{item}</li>)}
+                </ul>
+            </Grid>
+        );
+    };
+
+    const renderCca = () => {
+        return (
+            <Grid container justify="center" alignItems="center" className={classes.fullScreenHeight} id="aboutCca">
+                <Grid container item xs={11} sm={10} md={8} lg={6} justify="center">
+                    <Grid xs={12} className={classes.textAlignCenter}>
+                        <ColoredHeader variant="h2" copy="Co-Curricular Activities" className={atLeastMediumScreen ? classes.mb5 : classes.mb3} />
+                    </Grid>
+                    {cca.map(({cca, name, duration, desc}) => renderCcaItem(cca, name, duration, desc))}
                 </Grid>
             </Grid>
         );
@@ -287,6 +358,8 @@ function About() {
             {renderExpertise()}
             {renderExperience()}
             {renderTools()}
+            {renderEducation()}
+            {renderCca()}
             <ScrollToTop />
         </Grid>
     );

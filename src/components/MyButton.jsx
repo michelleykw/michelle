@@ -21,8 +21,24 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function MyButton({ content, onClick, icon, size = "large", variant, disabled = false, type = "button", className }) {
+function MyButton({ href, content, onClick, icon, size = "large", variant, disabled = false, type = "button", className }) {
     const classes = useStyles();
+
+    if (href) {
+        return (
+            <Button
+                href={href}
+                disabled={disabled}
+                variant={variant || "outlined"}
+                startIcon={icon}
+                onClick={onClick}
+                type={type}
+                className={`${classes.button} ${classes[size]} ${className}`}
+            >
+                {content}
+            </ Button>
+        );
+    }
 
     return (
         <Button

@@ -5,9 +5,10 @@ import { Grid, Typography } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import MyButton from '../components/MyButton';
 import ScrollToTop from '../components/ScrollToTop';
-import { introduction } from '../resources/constants';
+import PortfolioItem from '../components/PortfolioItem';
+import { introduction, portfolios} from '../resources/constants';
 import background from '../resources/background.png';
-import hero from '../resources/hero.png';
+import hero from '../resources/hero.svg';
 
 const useStyles = makeStyles(theme => ({
     hoverCursor: {
@@ -55,6 +56,9 @@ const useStyles = makeStyles(theme => ({
     textAlignCenter: {
         textAlign: "center"
     },
+    fullScreen: {
+        minHeight: "100vh"
+    },
     fullScreenWithFooterHeight: {
         minHeight: "calc(100vh - 112px)"
     },
@@ -82,27 +86,16 @@ const useStyles = makeStyles(theme => ({
         backgroundRepeat: "no-repeat",
         zIndex: "-1"
     },
-    heroBannerHeight: {
-        // minHeight: "50%"
-    },
-    asterik: {
-        fontSize: theme.spacing(30),
-        lineHeight: "100%"
-    },
     mb2: {
         marginBottom: theme.spacing(2)
     },
     mb4: {
         marginBottom: theme.spacing(4)
-    },
-    mb10: {
-        marginBottom: theme.spacing(10)
     }
 }));
 
 function Home() {
     const classes = useStyles();
-    const history = useHistory();
 
     const theme = useTheme();
     const atLeastMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
@@ -115,9 +108,12 @@ function Home() {
         setCursorY(e.clientY);
     });
 
-    const goToContactMe = () => {
-        history.push("/michelle/contact");
-    }
+    const viewResume = () => {
+        window.open(
+            'https://drive.google.com/file/d/1Ri3-7eHY_XVpla0tu-x9PceQflMFlKVE/view?usp=sharing',
+            '_blank'
+        );
+    };
 
     const getGreeting = () => {
         const today = new Date();
@@ -131,7 +127,7 @@ function Home() {
         } else {
             return 'Good Evening';
         }
-    }
+    };
 
     const renderHeroBanner = () => {
         return (
@@ -139,11 +135,9 @@ function Home() {
                 <Grid container item xs={12} justify="center" alignItems="center" className={`${classes.heroBackgroundImage}`}>
                     <Grid container item xs={12} justify="center" alignItems="center" className={`${classes.heroShapeImage}`}>
                         <Grid container item xs={10} justify="center">
-                            <Grid xs={12} className={`${classes.textAlignCenter} ${classes.heroBannerHeight}`}>
-                                <Typography variant="h1" className={classes.asterik}>*</Typography>
-                                <Typography variant="h1" className={classes.mb10}>{getGreeting()}</Typography>
+                            <Grid xs={12} className={`${classes.textAlignCenter}`}>
+                                <Typography variant="h1">{getGreeting()}</Typography>
                             </Grid>
-                            <Typography variant="subtitle1">Michelle UI/UX Product Development</Typography>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -156,8 +150,8 @@ function Home() {
             <Grid 
                 container 
                 justify="center" 
-                alignItems="center" c
-                className={`${classes.fullScreenWithFooterHeight} ${classes.backgroundColor}`} 
+                alignItems="center"
+                className={`${classes.fullScreen} ${classes.backgroundColor}`} 
                 id="homeIntro">
                 <Grid container item xs={10} md={8} justify="center">
                     <Typography variant="h3" className={`${classes.textAlignCenter} ${classes.mb4} ${atLeastMediumScreen && classes.hoverCursor}`}>
@@ -169,7 +163,29 @@ function Home() {
                             </>
                         )}
                     </Typography>
-                    <MyButton content="Contact Me" onClick={goToContactMe} />
+                    <MyButton content="View Resume" onClick={viewResume}/>
+                </Grid>
+            </Grid>
+        );
+    };
+
+    const renderPortfolio = () => {
+        return (
+            <Grid 
+                container 
+                justify="center" 
+                alignItems="center"
+                className={`${classes.fullScreenWithFooterHeight} ${classes.backgroundColor}`} 
+                id="homePortfolio">
+                <Grid container item justify="center">
+                    {portfolios.map(item => <PortfolioItem item={item} />)}
+                    {atLeastMediumScreen && (
+                        <>
+                            <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
+                            <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
+                        </>
+                    )}
+                    <MyButton content="View Resume" onClick={viewResume} className={classes.mb4}/>
                 </Grid>
             </Grid>
         );
@@ -179,6 +195,7 @@ function Home() {
         <Grid container>
             {renderHeroBanner()}
             {renderIntro()}
+            {renderPortfolio()}
             <ScrollToTop />
         </Grid>
     );

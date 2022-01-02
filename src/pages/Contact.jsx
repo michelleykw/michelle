@@ -173,10 +173,10 @@ function Contact() {
 
     return (
         <Grid justify="center" container className={classes.fullScreenHeight}>
-            {atLeastScreenSmall && <SideBar copy="Currently seeking internship opportunities as a Product Manager or UI/UX Designer" />}
+            {atLeastScreenSmall && <SideBar copy="Currently seeking full-time opportunities as an Associate Product Manager in the Tech industry" />}
             {isSubmitted ? (
                 <Grid container item xs={11} justify="center" alignItems="center" className={`${classes.content} ${classes.textAlignCenter}`}>
-                    {renderHeader("Thank you!", "I would do my best to get back to you in the next 24 hours. Have a great day!")}
+                    {renderHeader("Thank you!", "I would do my best to get back to you in the next 3 days. Have a great day!")}
                 </Grid>
             ) : (
                 <Grid container item xs={11} justify="center" alignItems="center" className={`${classes.content} ${classes.textAlignCenter}`}>
