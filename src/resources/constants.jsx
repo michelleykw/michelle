@@ -74,7 +74,7 @@ export const portfolios = [
 export const experiences = [
     {
         name: "Product Manager (Associate)",
-        duration: "Jun 2023 - Now",
+        duration: "Jun 2022 - Now",
         company: "Sea Limited",
         desc: [
             "Design features from end-to-end, from research and ideation to validation and implementation",
