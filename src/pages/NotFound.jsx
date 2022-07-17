@@ -45,7 +45,7 @@ function NotFound() {
 
     const goToPage = href => {
         history.push(href);
-    }
+    };
 
     const renderPagesButton = () => {
         return pages.map(({ href, label }) => {
@@ -57,11 +57,11 @@ function NotFound() {
                     onClick={() => goToPage(href)} />
             );
         });
-    }
+    };
 
     return (
         <Grid container alignItems="center" className={classes.fullScreenHeight}>
-            {atLeastMediumScreen && <SideBar copy="Download Michelle's full resume" />}
+            {atLeastMediumScreen && <SideBar copy="Product Management | Tech | Blockchain | UI/UX" />}
             <Grid container sm={12} md={11} className={classes.content} justify="center" alignItems="center">
                 <ColoredHeader copy="Oh no, the page can’t be found :(" className={`${classes.textAlignCenter} ${classes.mx1}`} />
                 <Grid item xs={12} justifyItems="center">

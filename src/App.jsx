@@ -23,6 +23,7 @@ function App() {
             <Route exact path="/michelle/contact" component={Contact} />
             <Route exact path="/michelle/portfolio" component={Portfolio} />
             <Route exact path="/michelle" component={Home} />
+            <Route exact path="/" component={Home} />
             <Route component={NotFound} />
           </Switch>
           <Footer />

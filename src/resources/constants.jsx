@@ -19,9 +19,6 @@ import nhouse2 from '../resources/portfolio/nhouse2.png';
 import nhouse3 from '../resources/portfolio/nhouse3.png';
 import mivpay from '../resources/portfolio/mivpay.svg';
 
-
-export const resumeUrl = 'https://drive.google.com/file/d/1Ri3-7eHY_XVpla0tu-x9PceQflMFlKVE/view?usp=sharing';
-
 export const portfolios = [
     {
         category: 'UI/UX Design',
@@ -76,6 +73,18 @@ export const portfolios = [
 
 export const experiences = [
     {
+        name: "Product Manager (Associate)",
+        duration: "Jun 2023 - Now",
+        company: "Sea Limited",
+        desc: [
+            "Design features from end-to-end, from research and ideation to validation and implementation",
+            "Oversee the product line’s life cycle and anticipate problems",
+            "Develop conceptual diagrams, wireframes, and product design documents (RAR / PRD)",
+            "Work closely with engineering teams to deliver with quick time-to-market and optimal resources",
+            "Take ownership of your projects, communicate requirements and timelines with stakeholders, and ensure that projects are completed with high quality"
+        ]
+    },
+    {
         name: "Full Stack Developer Intern",
         duration: "Jan 2021 - Aug 2021",
         company: "GoalsMapper Pte Ltd",
@@ -103,7 +112,7 @@ export const experiences = [
         duration: "Feb 2018 – Oct 2021",
         company: "SimleTutor Pte Ltd",
         desc: [
-            "Tutored 8 students over 3.5 years, with observed improvements by 2 grades on average",
+            "Tutored 8 students over 3.5 years, with observed improvements of at least 2 grades",
             "Evaluated student’s progress and discussed with parents on how to work on their weaknesses",
             "Prepared educational materials, assigned homework and corrected assignments"
         ]
@@ -113,12 +122,12 @@ export const experiences = [
 export const education = [
     {
         school: "National University of Singapore (NUS)",
-        degree: "Bachelor of Computing with Honours",
-        duration: "Aug 2018 - May 2022 (Expected)",
+        degree: "Bachelor of Computing (Honours)",
+        duration: "Aug 2018 - May 2022",
         desc: [
             "Major in Computer Science and Minor in Management", 
             "NUS Overseas Colleges (NOC), Singapore, Jan 2021 – Jul 2021", 
-            "Coursework: Interaction Design, Technological Innovation, Software Engineering, Start Up Case Study & Analysis, Finance"
+            "Coursework: Interaction Design, Technological Innovation, New Venture Creation, Software Engineering, Algorithms, Finance"
         ]
     },
     {
@@ -134,7 +143,11 @@ export const education = [
 
 export const expertise = 'Product Management, Web Design and Development, Full Stack Development, Project Management, UI/UX Design';
 
-export const introduction = "Hello, I’m Michelle, a final year NUS Computer Science student! Currently actively looking for roles as an Associate Product Manager in the tech industry. I have experience interning with Love, Bonito as a Product Intern and GoalsMapper as a Full Stack Developer.";
+export const homeIntroduction = "Hello, I’m Michelle, currently a Product Manager (Associate) in the Tech industry! During my university days in NUS as a Computer Science major, I had interned with Love, Bonito as a Product Management Intern and GoalsMapper as a Full Stack Developer.";
+
+export const aboutIntroduction = "Hello there, nice to meet you! This is Michelle, a Product Manager (Associate) in the Tech industry. I had recently graduated from NUS with a Bachelor of Computing in Computer Science (Honours) and minor in Management. I enjoy understanding the needs of people and coming up with tech solutions to address them. Product, Design, Development and Analysis drive my purpose in life ♡";
+
+export const aboutIntroduction2 = "In my free time, I like to play badminton with my peers! I am also currently learning new frameworks (i.e. Flutter) and reading up more on Blockchain and Finance (Bloomberg Market Concepts).";
 
 export const pages = [
     { href: "/michelle", label: "Home" },
@@ -149,11 +162,11 @@ export const socials = [
         icon: <LinkedInIcon />,
         href: "https://www.linkedin.com/in/michelle-yong"
     },
-    {
-        label: "Github",
-        icon: <GitHubIcon />,
-        href: "https://github.com/michelleykw"
-    },
+    // {
+    //     label: "Github",
+    //     icon: <GitHubIcon />,
+    //     href: "https://github.com/michelleykw"
+    // },
     {
         label: "Instagram",
         icon: <InstagramIcon />,
@@ -168,12 +181,8 @@ export const socials = [
 
 export const tools = [
     {
-        name: 'Development - Frontend',
-        toolList: ['React', 'Redux', 'Material UI', 'Bootstrap']
-    },
-    {
-        name: 'Development - Backend',
-        toolList: ['Django Python', 'PostgreSQL', 'MongoDB', 'NodeJS']
+        name: 'Product Management',
+        toolList: ['Jira', 'Confluence', 'Hotjar', 'Google Drive', 'Google Analytics', 'Google Optimize']
     },
     {
         name: 'UI/UX Design',
@@ -181,37 +190,41 @@ export const tools = [
     },
     {
         name: 'Illustration',
-        toolList: ['Adobe Photoshop', 'Adobe Illustrator', 'GIMP', 'iMovie', 'Canva']
-    },
-    {
-        name: 'Product Management',
-        toolList: ['Jira', 'Confluence', 'Hotjar', 'Google Drive', 'Google Analytics', 'Google Optimize']
+        toolList: ['Canva', 'Adobe Illustrator', 'iMovie', 'Adobe Photoshop'] // 'GIMP'
     },
     {
         name: 'Programming Languages',
-        toolList: ['JavaScript', 'Python', 'HTML', 'CSS', 'Java',  'Swift', 'C', 'C++']
-    }
+        toolList: ['JavaScript', 'Python', 'HTML', 'CSS', 'Java'] // 'Swift', 'C', 'C++', Solidity
+    },
+    {
+        name: 'Web Dev - Frontend',
+        toolList: ['React', 'Redux', 'Material UI', 'Bootstrap']
+    },
+    {
+        name: 'Web Dev - Backend',
+        toolList: ['Django Python', 'PostgreSQL', 'MongoDB', 'NodeJS']
+    },
 ];
 
 export const cca = [
     {
         cca: 'NUS ENterprise House (N-House)',
         name: 'Residential Assistant, Marketing Communications',
-        duration: 'Dec 2021 - May 2022 (Expected)',
+        duration: 'Dec 2021 - June 2022',
         desc: [
-            'Plan and implement events with the N-House team to support residents in their entrepreneurial journey',
-            'Counsel 14 undergraduate residents from various background on academic and personal questions',
-            'Lead a team of 15 for publicity and production projects',
-            'Designed posters published on N-House social media for various events from Jan to Dec 2021, including N-House’s flagship event Pitch Night and 10 Year Anniversary, using Canva and Illustrator'
+            'Organised events to support residents in their entrepreneurial journey, including company visits to various companies such as Shopback and xFers',
+            'Counselled undergraduate residents from various background on academic and personal questions',
+            "Led the team for publicity and production projects to publicise N-House events",
+            "Designed posters published on N-House social media for various events from Jan 2021 to May 2022, including N-House’s flagship event - Pitch Night - and 10 Year Anniversary, using Canva and Illustrator",
         ]
     },
     {
-        cca: 'NUS Student Union Venture Enterprise',
+        cca: 'NUS Student Union Venture Enterprise (NVE)',
         name: 'Executive, Product Development',
-        duration: 'Aug 2021 – Dec 2021',
+        duration: 'Aug 2021 – May 2022',
         desc: [
             'Conducted market surveys to learn about the product that customers want and their willingness to pay',
-            'Designed merchandise based on the preferences indicated by potential customers'
+            'Designed merchandise (T-shirts) based on the preferences indicated by potential customers'
         ]
     },
     {
@@ -220,7 +233,7 @@ export const cca = [
         duration: 'Aug 2019 – Jul 2020',
         desc: [
             'Conducted market research and reviewed current product pricings under the Product Pricing Team',
-            'Led a team of 3 in raising 3 in-kind sponsors for National Leadership Development Conference (NLDC)'
+            'Led a team of three in raising in-kind sponsors for National Leadership Development Conference (NLDC)'
         ]
     },
     {
@@ -231,12 +244,12 @@ export const cca = [
             'Designed social media posts and stories, using Photoshop and Illustrator, gaining over 1,800 outreach'
         ]
     },
-    {
-        cca: 'School of Computing',
-        name: 'Float Head, Receive-and-Give (RAG) Committee',
-        duration: 'Dec 2018 – Aug 2019',
-        desc: [
-            'Led the float team in float design, manpower allocation, budget allocation and spending, attaining Silver Award'
-        ]
-    },
+    // {
+    //     cca: 'School of Computing',
+    //     name: 'Float Head, Receive-and-Give (RAG) Committee',
+    //     duration: 'Dec 2018 – Aug 2019',
+    //     desc: [
+    //         'Led the float team in float design, manpower allocation, budget allocation and spending, attaining Silver Award'
+    //     ]
+    // },
 ];

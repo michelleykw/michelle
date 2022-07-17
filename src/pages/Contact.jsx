@@ -191,7 +191,7 @@ function Contact() {
 
     return (
         <Grid justify="center" container className={classes.fullScreenHeight}>
-            {atLeastScreenSmall && <SideBar copy="Currently seeking full-time opportunities as an Associate Product Manager in the Tech industry" />}
+            {atLeastScreenSmall && <SideBar copy="Product Management | Tech | Blockchain | UI/UX" />}
             {isSubmitted ? (
                 <Grid container item xs={11} justify="center" alignItems="center" className={`${classes.content} ${classes.textAlignCenter}`}>
                     {renderHeader("Thank you!", "I have received your submission and would do my best to get back to you in the next 3 days. Have a great week ahead!")}

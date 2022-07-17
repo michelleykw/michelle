@@ -2856,7 +2856,7 @@ ajv@^7.0.2:
 all@^0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/all/-/all-0.0.0.tgz#fb2aa75d4759d40e39ecbb118fabf0cc11ff554f"
-  integrity sha1-+yqnXUdZ1A457LsRj6vwzBH/VU8=
+  integrity sha512-0oKlfNVv2d+d7c1gwjGspzgbwot47PGQ4b3v1ccx4mR8l9P/Y6E6Dr/yE8lNT63EcAKEbHo6UG3odDpC/NQcKw==
 
 alphanum-sort@^1.0.0:
   version "1.0.2"

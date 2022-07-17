@@ -8,7 +8,7 @@ import ColoredHeader from '../components/ColoredHeader';
 import MyButton from '../components/MyButton';
 import ScrollToTop from '../components/ScrollToTop';
 import profile from '../resources/profile.jpg';
-import { cca, education, experiences, expertise, resumeUrl, tools } from '../resources/constants';
+import { cca, education, experiences, expertise, tools, aboutIntroduction, aboutIntroduction2 } from '../resources/constants';
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -117,7 +117,8 @@ const useStyles = makeStyles(theme => ({
     ul: {
         marginLeft: theme.spacing(4),
         marginRight: theme.spacing(4),
-        paddingLeft: theme.spacing(1)
+        paddingLeft: theme.spacing(1),
+        lineHeight: "1.5rem"
     },
     li: {
         fontSize: "1.125rem",
@@ -139,15 +140,14 @@ const useStyles = makeStyles(theme => ({
     mb6: {
         marginBottom: theme.spacing(6)
     },
+    mt2: {
+        marginTop: theme.spacing(2)
+    },
     mt5: {
         marginTop: theme.spacing(5)
     },
-    mt10: {
-        marginTop: theme.spacing(10)
-    },
-    mx2: {
-        marginLeft: theme.spacing(2),
-        marginRight: theme.spacing(2)
+    mt8: {
+        marginTop: theme.spacing(8)
     },
     mx12: {
         marginLeft: theme.spacing(12),
@@ -205,12 +205,13 @@ function About() {
                             THIS IS ME
                         </Typography>
                     )}
-                    <Typography variant="subtitle1">
-                        Hello there, nice to meet you! This is Michelle, a Year 4 NUS undergraduate, pursuing a Bachelor of Computing in Computer Science with a minor in Management. I enjoy understanding the needs of people and coming up with tech solutions to address them. Product, Design, Development and Analysis drive my purpose in life ♡
-                    </Typography>
+                    <Grid>
+                        <Typography variant="subtitle1">{aboutIntroduction}</Typography>
+                        <Typography variant="subtitle1" className={classes.mt2}>{aboutIntroduction2}</Typography>
+                    </Grid>
                     <ArrowDownwardRoundedIcon
                         color="primary" 
-                        className={`${classes.outlineRounded} ${classes.mt10}`} 
+                        className={`${classes.outlineRounded} ${classes.mt8}`} 
                         onClick={() => scrollTo(experienceRef)}
                     />
                 </Grid>
@@ -362,7 +363,6 @@ function About() {
         );
     };
 
-    const viewResume = () => window.open(resumeUrl,'_blank');
     const goToPortfolio = () => history.push('/michelle/portfolio');
 
     return (
@@ -374,8 +374,7 @@ function About() {
             {renderEducation()}
             {renderCca()}
             <Grid container justify="center" className={`${classes.pt2}`}>
-                <MyButton content="View Resume" onClick={viewResume} className={`${classes.mx2} ${classes.mb2}`}/>
-                <MyButton content="View Portfolio" onClick={goToPortfolio} className={`${classes.mx2} ${classes.mb2}`}/>
+                <MyButton content="View Portfolio" onClick={goToPortfolio} className={`${classes.mb2}`}/>
             </Grid>
             <ScrollToTop />
         </Grid>

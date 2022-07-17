@@ -6,7 +6,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import MyButton from '../components/MyButton';
 import ScrollToTop from '../components/ScrollToTop';
 import PortfolioItem from '../components/PortfolioItem';
-import { introduction, portfolios, resumeUrl } from '../resources/constants';
+import { homeIntroduction, portfolios } from '../resources/constants';
 import background from '../resources/background.png';
 import hero from '../resources/hero.svg';
 
@@ -92,10 +92,6 @@ const useStyles = makeStyles(theme => ({
     mb4: {
         marginBottom: theme.spacing(4)
     },
-    mx2: {
-        marginLeft: theme.spacing(2),
-        marginRight: theme.spacing(2)
-    }
 }));
 
 function Home() {
@@ -111,8 +107,6 @@ function Home() {
         setCursorX(e.clientX);
         setCursorY(e.clientY);
     });
-
-    const viewResume = () => window.open(resumeUrl,'_blank');
 
     const goToAbout = () => history.push('/michelle/about');
 
@@ -156,7 +150,7 @@ function Home() {
                 id="homeIntro">
                 <Grid container item xs={10} md={8} justify="center">
                     <Typography variant="h3" className={`${classes.textAlignCenter} ${classes.mb4} ${atLeastMediumScreen && classes.hoverCursor}`}>
-                        {introduction}
+                        {homeIntroduction}
                         {atLeastMediumScreen && (
                             <>
                                 <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
@@ -164,7 +158,6 @@ function Home() {
                             </>
                         )}
                     </Typography>
-                    <MyButton content="View Resume" onClick={viewResume}/>
                 </Grid>
             </Grid>
         );
@@ -187,8 +180,7 @@ function Home() {
                         </Grid>
                     )}
                     <Grid container justify="center" className={classes.mb2}>
-                        <MyButton content="View Resume" onClick={viewResume} className={`${classes.mx2} ${classes.mb2}`}/>
-                        <MyButton content="About Me" onClick={goToAbout} className={`${classes.mx2} ${classes.mb2}`}/>
+                        <MyButton content="About Me" onClick={goToAbout} className={`${classes.mb2}`}/>
                     </Grid>
                 </Grid>
             </Grid>
