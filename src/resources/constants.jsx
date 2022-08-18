@@ -75,13 +75,13 @@ export const experiences = [
     {
         name: "Product Manager (Associate)",
         duration: "Jun 2022 - Now",
-        company: "Sea Limited",
+        company: "Labs, Sea Limited",
         desc: [
             "Design features from end-to-end, from research and ideation to validation and implementation",
             "Oversee the product line’s life cycle and anticipate problems",
             "Develop conceptual diagrams, wireframes, and product design documents (RAR / PRD)",
             "Work closely with engineering teams to deliver with quick time-to-market and optimal resources",
-            "Take ownership of your projects, communicate requirements and timelines with stakeholders, and ensure that projects are completed with high quality"
+            "Take ownership of projects, communicate requirements and timelines with stakeholders, and ensure that projects are completed with high quality"
         ]
     },
     {
@@ -145,9 +145,9 @@ export const expertise = 'Product Management, Web Design and Development, Full S
 
 export const homeIntroduction = "Hello, I’m Michelle, currently a Product Manager (Associate) in the Tech industry! During my university days in NUS as a Computer Science major, I had interned with Love, Bonito as a Product Management Intern and GoalsMapper as a Full Stack Developer.";
 
-export const aboutIntroduction = "Hello there, nice to meet you! This is Michelle, a Product Manager (Associate) in the Tech industry. I had recently graduated from NUS with a Bachelor of Computing in Computer Science (Honours) and minor in Management. I enjoy understanding the needs of people and coming up with tech solutions to address them. Product, Design, Development and Analysis drive my purpose in life ♡";
+export const aboutIntroduction = "Hello there, nice to meet you! This is Michelle, a Product Manager (Associate) in the Tech industry. I had recently graduated from NUS with a Bachelor of Computing in Computer Science (Honours) and minor in Management. Back when I was on the NOC Singapore program, I discovered my passion in understanding the needs of people and coming up with tech solutions to address them. Product, Design, Development and Analysis drive my purpose in life ♡";
 
-export const aboutIntroduction2 = "In my free time, I like to play badminton with my peers! I am also currently learning new frameworks (i.e. Flutter) and reading up more on Blockchain and Finance (Bloomberg Market Concepts).";
+export const aboutIntroduction2 = "In my free time, I like to play badminton with my peers! I enjoy travelling and here is a photo of me back in Germany. I am also currently reading up more on Blockchain and Finance (Bloomberg Market Concepts). Would love to connect through LinkedIn to chat more :)";
 
 export const pages = [
     { href: "/michelle", label: "Home" },
