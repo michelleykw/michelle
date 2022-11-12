@@ -82,7 +82,8 @@ export const experiences = [
             "Oversee the product life cycle and anticipate blockers",
             "Develop conceptual diagrams, wireframes (using Figma and Miro), and product design documents (RAR / PRD)",
             "Work closely with designers and developers to optimise resources and deliver product with high quality",
-            "Take ownership of projects, communicate requirements and timelines with stakeholders"
+            "Take ownership of projects, communicate requirements and timelines with stakeholders",
+            "Built a mental health app as a frontend developer for a 24-hour hackathon organised by Sea"
         ]
     },
     {
