@@ -149,6 +149,10 @@ const useStyles = makeStyles(theme => ({
     mt8: {
         marginTop: theme.spacing(8)
     },
+    mx1: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1)
+    },
     mx12: {
         marginLeft: theme.spacing(12),
         marginRight: theme.spacing(12)
@@ -365,16 +369,19 @@ function About() {
 
     const goToPortfolio = () => history.push('/michelle/portfolio');
 
+    const goToContact = () => history.push('/michelle/contact');
+
     return (
         <Grid container className={classes.container}>
             {renderIntro()}
-            {renderExpertise()}
             {renderExperience()}
-            {renderTools()}
             {renderEducation()}
+            {renderExpertise()}
+            {renderTools()}
             {renderCca()}
             <Grid container justify="center" className={`${classes.pt2}`}>
-                <MyButton content="View Portfolio" onClick={goToPortfolio} className={`${classes.mb2}`}/>
+                <MyButton content="View Portfolio" onClick={goToPortfolio} className={`${classes.mb2} ${classes.mx1}`}/>
+                <MyButton content="Contact Me" onClick={goToContact} className={`${classes.mb2} ${classes.mx1}`}/>
             </Grid>
             <ScrollToTop />
         </Grid>
