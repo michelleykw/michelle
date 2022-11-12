@@ -89,6 +89,9 @@ const useStyles = makeStyles(theme => ({
     mb2: {
         marginBottom: theme.spacing(2)
     },
+    mt4: {
+        marginTop: theme.spacing(4)
+    },
     mb4: {
         marginBottom: theme.spacing(4)
     },
@@ -140,6 +143,14 @@ function Home() {
         );
     };
 
+    const renderAboutButton = (className, content) => {
+        return (
+            <Grid container justify="center" className={`${className}`}>
+                <MyButton content={content || "About Me"} onClick={goToAbout} className={`${classes.mb2}`}/>
+            </Grid>
+        );
+    };
+
     const renderIntro = () => {
         return (
             <Grid 
@@ -151,11 +162,12 @@ function Home() {
                 <Grid container item xs={10} md={8} justify="center">
                     <Typography variant="h3" className={`${classes.textAlignCenter} ${classes.mb4} ${atLeastMediumScreen && classes.hoverCursor}`}>
                         {homeIntroduction}
+                        {renderAboutButton(classes.mt4, "More About Me")}
                         {atLeastMediumScreen && (
-                            <>
+                            <Grid>
                                 <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
                                 <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
-                            </>
+                            </Grid>
                         )}
                     </Typography>
                 </Grid>
@@ -179,9 +191,7 @@ function Home() {
                             <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
                         </Grid>
                     )}
-                    <Grid container justify="center" className={classes.mb2}>
-                        <MyButton content="About Me" onClick={goToAbout} className={`${classes.mb2}`}/>
-                    </Grid>
+                    {renderAboutButton(classes.mb2)}
                 </Grid>
             </Grid>
         );

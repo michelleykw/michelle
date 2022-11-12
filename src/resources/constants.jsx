@@ -143,7 +143,7 @@ export const education = [
 
 export const expertise = 'Product Management, Web Design and Development, Full Stack Development, Project Management, UI/UX Design';
 
-export const homeIntroduction = "Hello, I’m Michelle, currently a Product Manager (Associate) in the Tech industry! During my university days in NUS as a Computer Science major, I had interned with Love, Bonito as a Product Management Intern and GoalsMapper as a Full Stack Developer.";
+export const homeIntroduction = "Hello 👋🏻 I’m Michelle, an aspiring Product Manager and a NUS Computer Science graduate. I enjoy working on software products as a product manager, developer and designer. See my profile for more information on my past experiences in Sea Labs, GoalsMapper and Love, Bonito!";
 
 export const aboutIntroduction = "Hello there, nice to meet you! This is Michelle, a Product Manager (Associate) in the Tech industry. I had recently graduated from NUS with a Bachelor of Computing in Computer Science (Honours) and minor in Management. Back when I was on the NOC Singapore program, I discovered my passion in understanding the needs of people and coming up with tech solutions to address them. Product, Design, Development and Analysis drive my purpose in life ♡";
 
