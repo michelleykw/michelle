@@ -151,6 +151,17 @@ function Home() {
         );
     };
 
+    const renderCursorStyle = () => {
+        if (atLeastMediumScreen) {
+            return (
+                <Grid>
+                    <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
+                    <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
+                </Grid>
+            );
+        }
+    };
+
     const renderIntro = () => {
         return (
             <Grid 
@@ -163,12 +174,7 @@ function Home() {
                     <Typography variant="h3" className={`${classes.textAlignCenter} ${classes.mb4} ${atLeastMediumScreen && classes.hoverCursor}`}>
                         {homeIntroduction}
                         {renderAboutButton(classes.mt4, "More About Me")}
-                        {atLeastMediumScreen && (
-                            <Grid>
-                                <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
-                                <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
-                            </Grid>
-                        )}
+                        {renderCursorStyle()}
                     </Typography>
                 </Grid>
             </Grid>
@@ -185,12 +191,7 @@ function Home() {
                 id="homePortfolio">
                 <Grid container item justify="center">
                     {portfolios.map(item => <PortfolioItem item={item} />)}
-                    {atLeastMediumScreen && (
-                        <Grid>
-                            <div className={classes.cursor} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
-                            <div className={classes.cursorDot} style={{left: cursorX + 'px', top: cursorY + 'px'}} />
-                        </Grid>
-                    )}
+                    {renderCursorStyle()}
                     {renderAboutButton(classes.mb2)}
                 </Grid>
             </Grid>
