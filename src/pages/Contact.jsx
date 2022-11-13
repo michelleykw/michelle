@@ -66,7 +66,7 @@ function Contact() {
         firstName: "",
         lastName: "",
         email: "",
-        phone: "",
+        mobile: "",
         subject: "",
         message: ""
     };
@@ -82,7 +82,7 @@ function Contact() {
                 'First Name': values.firstName,
                 'Last Name': values.lastName,
                 'Email': values.email,
-                'Mobile': values.phone,
+                'Mobile': values.mobile,
                 'Subject': values.subject,
                 'Message': values.message
             });
@@ -95,23 +95,23 @@ function Contact() {
 
     const contactYupSchema = yup.object().shape({
         firstName: yup.string()
-            .min(1, 'Too Short!')
+            .min(1, 'First name is required')
             .max(50, 'Too Long!')
             .required('First name is required'),
         lastName: yup.string()
-            .min(2, 'Too Short!')
+            .min(1, 'Too Short!')
             .max(50, 'Too Long!')
             .notRequired()
             .nullable(),
         email: yup.string().email('Invalid email').required('Email is required'),
-        phone: yup.string().notRequired().nullable(),
+        mobile: yup.string().notRequired().nullable(),
         subject: yup.string()
-            .min(1, 'Too Short!')
-            .max(50, 'Too Long!')
+            .min(1, 'Subject is required')
+            .max(256, 'Shorten your subject (Max: 256 characters)')
             .required('Subject is required'),
         message: yup.string()
-            .min(1, 'Too Short!')
-            .max(500, 'Too Long!')
+            .min(1, 'Message is required')
+            .max(3000, 'Summarise your message (Max: 3000 characters)')
             .required('Message is required'),
     });
 
@@ -154,7 +154,7 @@ function Contact() {
                         </Grid>
                         <Grid container item justify="space-between">
                             {renderFormElement("email", "Email", atLeastScreenSmall && classes.pr1, 6, "themichelleyong@gmail.com", "email", touched.email && errors.email, true)}
-                            {renderFormElement("phone", "Mobile", atLeastScreenSmall && classes.pl1)}
+                            {renderFormElement("mobile", "Mobile", atLeastScreenSmall && classes.pl1)}
                         </Grid>
                         <Grid container item xs={12}>
                             {renderFormElement("subject", "Subject", "", 12, "", "text", touched.subject && errors.subject, true)}
@@ -205,15 +205,15 @@ function Contact() {
 
     return (
         <Grid justify="center" container className={classes.fullScreenHeight}>
-            {atLeastScreenSmall && <SideBar copy="Product Management | Tech | Blockchain | UI/UX" />}
+            {atLeastScreenSmall && <SideBar copy="Product Management | Web Development | UI/UX" />}
             {isSubmitted ? (
                 <Grid container item xs={11} justify="center" alignItems="center" className={`${classes.content} ${classes.textAlignCenter}`}>
-                    {renderHeader("Thank you!", "I have received your submission and would do my best to get back to you in the next 3 days. Have a great week ahead!")}
+                    {renderHeader("Thank you!", "I have received your email and would get back to you in the next 3 days. Have a great week ahead!")}
                 </Grid>
             ) : (
                 <Grid container item xs={11} justify="center" alignItems="center" className={`${classes.content} ${classes.textAlignCenter}`}>
                     <Grid container>
-                        {renderHeader("Get in Touch", "Hi there, I’m Michelle. Would like to get in touch with me? Simply fill up the form below.")}
+                        {renderHeader("Get in Touch", "Hi there, I’m Michelle. Would like to get in touch with me? Drop me a message below.")}
                         <Grid item xs={12} className={atLeastScreenSmall ? classes.mt5 : classes.mt2}>
                             <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={contactYupSchema}>
                                 {formikBag => renderForm(formikBag)}
