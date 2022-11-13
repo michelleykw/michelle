@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 import { useFormspark } from "@formspark/use-formspark";
@@ -21,8 +23,15 @@ const useStyles = makeStyles(theme => ({
     textAlignCenter: {
         textAlign: "center"
     },
+    alertTextStyle: {
+        textAlign: "left",
+        lineHeight: '115%'
+    },
     primaryColor: {
         color: theme.palette.primary.main
+    },
+    mbHalf: {
+        marginBottom: theme.spacing(0.5)
     },
     mb5: {
         marginBottom: theme.spacing(5)
@@ -51,6 +60,7 @@ function Contact() {
     const atLeastScreenSmall = useMediaQuery(theme.breakpoints.up('sm'));
 
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isSubmitError, setIsSubmitError] = useState(false);
 
     const initialValues = { 
         firstName: "",
@@ -78,7 +88,8 @@ function Contact() {
             });
             setIsSubmitted(true);
         } catch(err) {
-            console.log("ERROR!", err);
+            // console.log("ERROR!", err);
+            setIsSubmitError(true);
         }
     };
 
@@ -115,6 +126,22 @@ function Contact() {
         );
     };
 
+    const renderFormElement = (name, label, className, sm = 6, placeholder = "", type = "text", hasError = false, required = false, control = "input") => {
+        return (
+            <Grid item xs={12} sm={sm} className={className}>
+                <FormElement 
+                    name={name} 
+                    type={type}  
+                    label={label} 
+                    placeholder={placeholder} 
+                    hasError={hasError} 
+                    required={required}
+                    control={control}
+                />
+            </Grid>
+        );
+    };
+
     const renderForm = formikBag => {
         const { touched, errors } = formikBag;
         return (
@@ -122,63 +149,18 @@ function Contact() {
                 <Grid container justify="center" alignItems="center">
                     <Grid container item xs={11} sm={10} lg={8}>
                         <Grid container item justify="space-between">
-                            <Grid item xs={12} sm={6} className={atLeastScreenSmall && classes.pr1}>
-                                <FormElement 
-                                    name="firstName" 
-                                    type="text" 
-                                    label="First Name" 
-                                    placeholder="Michelle"
-                                    hasError={touched.firstName && errors.firstName} 
-                                    required 
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={6} className={atLeastScreenSmall && classes.pl1}>
-                                <FormElement 
-                                    name="lastName" 
-                                    type="text" 
-                                    label="Last Name" 
-                                    placeholder="Yong"
-                                />
-                            </Grid>
+                            {renderFormElement("firstName", "First Name", atLeastScreenSmall && classes.pr1, 6, "Michelle", "text", touched.firstName && errors.firstName, true)}
+                            {renderFormElement("lastName", "Last Name", atLeastScreenSmall && classes.pl1, 6, "Yong")}
                         </Grid>
                         <Grid container item justify="space-between">
-                            <Grid item xs={12} sm={6} className={atLeastScreenSmall && classes.pr1}>
-                                <FormElement 
-                                    name="email" 
-                                    type="email" 
-                                    label="Email" 
-                                    placeholder="themichelleyong@gmail.com"
-                                    hasError={touched.email && errors.email} 
-                                    required 
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={6} className={atLeastScreenSmall && classes.pl1}>
-                                <FormElement name="phone" label="Phone" />
-                            </Grid>
-                        </Grid>
-                        <Grid container item>
-                            <Grid item xs={12}>
-                                <FormElement 
-                                    name="subject" 
-                                    type="text" 
-                                    label="Subject"
-                                    hasError={touched.subject && errors.subject} 
-                                    required 
-                                />
-                            </Grid>
+                            {renderFormElement("email", "Email", atLeastScreenSmall && classes.pr1, 6, "themichelleyong@gmail.com", "email", touched.email && errors.email, true)}
+                            {renderFormElement("phone", "Mobile", atLeastScreenSmall && classes.pl1)}
                         </Grid>
                         <Grid container item xs={12}>
-                            <Grid item xs={12}>
-                                <FormElement   
-                                    name="message" 
-                                    type="text" 
-                                    label="Message" 
-                                    control="textarea" 
-                                    placeholder="Leave me a message ♡"
-                                    hasError={touched.message && errors.message} 
-                                    required 
-                                />
-                            </Grid>
+                            {renderFormElement("subject", "Subject", "", 12, "", "text", touched.subject && errors.subject, true)}
+                        </Grid>
+                        <Grid container item xs={12}>
+                            {renderFormElement("message", "Message", "", 12, "Leave me a message ♡", "text", touched.message && errors.message, true, "textarea")}
                         </Grid>
                         <Grid container item justify={atLeastScreenSmall ? "flex-end": "center"} className={`${classes.mt2} ${classes.mb5}`}>
                             <MyButton content="Submit" type="submit" disabled={submitting} />
@@ -186,6 +168,38 @@ function Contact() {
                     </Grid>
                 </Grid>
             </Form>
+        );
+    };
+
+    const handleSnackbarClose = (event, reason) => {
+        if (reason === "clickaway") {
+          return;
+        }
+    
+        setIsSubmitError(false);
+    };
+
+    const renderCustomisedAlert = () => {
+        return (
+            <Alert severity="error" variant="outlined" sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                <Typography variant="body2" className={`${classes.alertTextStyle} ${classes.mbHalf}`}>
+                    Sorry, I am facing issues sending your message to Michelle.
+                    Please try again or reach out to her via the email below.
+                </Typography>
+            </Alert>
+        );
+    };
+
+    const renderSubmitError = () => {
+        return (
+            <Snackbar 
+                open={isSubmitError} 
+                autoHideDuration={6000} 
+                onClose={handleSnackbarClose} 
+                anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+            >
+                {renderCustomisedAlert()}
+            </Snackbar>
         );
     };
 
@@ -205,6 +219,7 @@ function Contact() {
                                 {formikBag => renderForm(formikBag)}
                             </Formik>
                         </Grid>
+                        {isSubmitError && renderSubmitError()}
                     </Grid>
                 </Grid>
             )}
