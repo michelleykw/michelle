@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
         fontStyle: "italic"
     },
     infoErrorSize: {
-        fontSize: theme.spacing(1.8),
+        fontSize: theme.spacing(1.5),
         marginRight: theme.spacing(0.5)
     }
 }));
@@ -25,7 +25,7 @@ function ErrorComponent({ children }) {
         <Grid item>
             <Grid container alignItems="center">
                 <InfoOutlinedIcon color="error" className={classes.infoErrorSize} />
-                <Typography className={classes.errorText}>{children}</Typography>
+                <Typography variant="body2" className={classes.errorText}>{children}</Typography>
             </Grid>
         </Grid>
     );

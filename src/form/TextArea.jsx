@@ -36,6 +36,9 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: theme.palette.error[50],
             boxShadow: "0 0 4px #FEF8F8"
         }
+    },
+    mbQuarter: {
+        marginBottom: theme.spacing(0.25)
     }
 }));
 
@@ -45,7 +48,7 @@ function TextArea(props) {
 
     return (
         <Grid container item className={classes.formControl} justitfy="flex-start">
-            <Grid container item xs={12} justify="space-between">
+            <Grid container item xs={12} justify="space-between" className={classes.mbQuarter}>
                 <Grid item>
                     <label htmlFor={name} className={hasError && classes.hasError}>{`${label}${required ? ' *' : ''}`}</label>
                 </Grid>
