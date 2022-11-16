@@ -147,9 +147,9 @@ export const education = [
 
 export const expertise = 'Product Management, Web Design and Development, UI/UX Design, Front End Development, Project Management';
 
-export const homeIntroduction = "Hello 👋🏻 I’m Michelle, an aspiring Product Manager and a NUS Computer Science graduate. I enjoy working on software products as a product manager, developer and designer. See my profile for more information on my past experiences in Sea Labs, GoalsMapper and Love, Bonito!";
+export const homeIntroduction = "Hello 👋🏻 I’m Michelle, an aspiring Product Manager and Web Developer. As a recent NUS Computer Science graduate, I enjoy working on software products, providing value to users and improving their overall user experience. See my profile for more information on my past experiences in Sea Labs, GoalsMapper and Love, Bonito!";
 
-export const aboutIntroduction = "Hello there, nice to meet you! This is Michelle, a Product Manager (Associate) in the Tech industry. I had recently graduated from NUS with a Bachelor of Computing in Computer Science (Honours) and minor in Management. Back when I was on the NOC Singapore program, I discovered my passion in understanding the needs of people and coming up with tech solutions to address them. Product, Design, Development and Analysis drive my purpose in life ♡";
+export const aboutIntroduction = "Hello there, nice to meet you! This is Michelle, a Product Manager and Web Developer in the tech industry. I had recently graduated from NUS with a Bachelor of Computing in Computer Science (Honours) and minor in Management. Back when I was on the NOC Singapore program, I discovered my passion in understanding the needs of people and coming up with tech solutions to address them. Product, Design, Development and Analysis drive my purpose in life ♡";
 
 export const aboutIntroduction2 = "In my free time, I like to play badminton with my peers! I enjoy travelling and here is a photo of me back in Germany. Would love to connect through LinkedIn to chat more :)";
 
@@ -186,23 +186,23 @@ export const socials = [
 export const tools = [
     {
         name: 'Product Management',
-        toolList: ['Jira', 'Confluence', 'Hotjar', 'Google Drive', 'Google Analytics', 'Google Optimize']
+        toolList: ['Confluence', 'Hotjar', 'Google Drive', 'Google Analytics', 'Google Optimize']
     },
     {
         name: 'UI/UX Design',
-        toolList: ['Figma', 'FluidUI', 'Balsamiq', 'WordPress', 'Wix']
+        toolList: ['Figma', 'FluidUI', 'Balsamiq', 'WordPress', 'Wix', 'Canva', 'Adobe Illustrator']
     },
     {
-        name: 'Illustration',
-        toolList: ['Canva', 'Adobe Illustrator', 'iMovie', 'Adobe Photoshop'] // 'GIMP'
+        name: 'Project Management',
+        toolList: ['Jira', 'Asana', 'Notion', 'Trello', 'Mailchimp'] 
     },
     {
         name: 'Programming Languages',
-        toolList: ['JavaScript', 'Python', 'HTML', 'CSS', 'Java'] // 'Swift', 'C', 'C++', Solidity
+        toolList: ['JavaScript', 'Python', 'HTML', 'CSS'] // 'Java', 'Swift', 'C', 'C++', 'Solidity'
     },
     {
         name: 'Web Dev - Frontend',
-        toolList: ['React.js', 'Redux', 'Material UI', 'Bootstrap']
+        toolList: ['ReactJS', 'Redux', 'Material UI', 'Bootstrap']
     },
     {
         name: 'Web Dev - Backend',
