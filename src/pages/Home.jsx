@@ -13,7 +13,6 @@ import hero from '../resources/hero.svg';
 const useStyles = makeStyles(theme => ({
     hoverCursor: {
         '&:hover': {
-            color: theme.palette.text.primary,
             '& $cursor': {
                 transform: "translate(-50%, -50%) scale(1.7)",
                 border: "1px solid",

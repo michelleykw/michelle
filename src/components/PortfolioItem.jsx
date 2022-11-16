@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
-import { ImageList, ImageListItem } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@material-ui/core';
+import { collapseClasses, ImageList, ImageListItem } from '@mui/material';
 import SideBar from '../components/SideBar';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -18,6 +18,47 @@ const useStyles = makeStyles(theme => ({
     },
     textAlignRight: {
         textAlign: "right"
+    },
+    cardHover: {
+        "&:hover": {  
+            "& $image": {
+                opacity: 0.3
+            },
+            // "& $cardHoverSection": {
+            //     opacity: 1
+            // }
+        }
+    },
+    image: {
+        opacity: 1,
+        display: "block",
+        width: "100%",
+        height: "auto",
+        transition: ".5s ease",
+        backfaceVisibility: "hidden",
+        "&:hover": {  
+            "& $image": {
+                opacity: 0.3
+            },
+            // "& $cardHoverSection": {
+            //     opacity: 1
+            // }
+        }
+    },
+    cardHoverSection: {
+        transition: ".5s ease",
+        opacity: 0,
+        position: "absolute",
+        top: "55%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        msTransform: "translate(-50%, -50%)",
+        textAlign: "center",
+    },
+    cardHoverContent: {
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.primary.contrastText,
+        padding: theme.spacing(3),
     },
     mb1: {
         marginBottom: theme.spacing(1)
@@ -45,8 +86,25 @@ function PortfolioItem({ item, isPortfolioPage = false }) {
     const isHomePageContent = isPortfolioPage || (!isPortfolioPage && isHighlight);
 
     const renderImages = images => {
+        
         if (images.length === 1) {
-            return <img src={images[0]} alt={`${category}: ${name}`} width="100%" height="auto" />
+            // return <img src={images[0]} alt={`${category}: ${name}`} width="100%" height="auto" />
+            return (
+                <Card className={classes.cardHover}>
+                    <CardMedia
+                        component="img"
+                        width="100%" height="auto"
+                        image={images[0]}
+                        alt={`${category}: ${name}`}
+                        className={classes.image}
+                    />
+                    <CardContent className={classes.cardHoverSection}>
+                        <Typography gutterBottom variant="h5" component="div" className={classes.cardHoverContent}>
+                            Hover yayy
+                        </Typography>
+                    </CardContent>
+                </Card>
+            );
         }
 
         if (images.length === 2) {

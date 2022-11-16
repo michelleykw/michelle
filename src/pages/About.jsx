@@ -146,8 +146,8 @@ const useStyles = makeStyles(theme => ({
     mt5: {
         marginTop: theme.spacing(5)
     },
-    mt8: {
-        marginTop: theme.spacing(8)
+    mt6: {
+        marginTop: theme.spacing(6)
     },
     mx1: {
         marginLeft: theme.spacing(1),
@@ -215,7 +215,7 @@ function About() {
                     </Grid>
                     <ArrowDownwardRoundedIcon
                         color="primary" 
-                        className={`${classes.outlineRounded} ${classes.mt8}`} 
+                        className={`${classes.outlineRounded} ${classes.mt6}`} 
                         onClick={() => scrollTo(experienceRef)}
                     />
                 </Grid>
