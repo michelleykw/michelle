@@ -74,7 +74,7 @@ export const portfolios = [
 export const experiences = [
     {
         name: "Product Manager (Associate)",
-        duration: "Jun 2022 - Now",
+        duration: "Jun 2022 - Sep 2022",
         company: "Sea Limited",
         desc: [
             "Part of Sea Labs (R&D department in Sea), working on a sports application for fans and club manager",

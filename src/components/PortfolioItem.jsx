@@ -16,58 +16,64 @@ const useStyles = makeStyles(theme => ({
     textAlignCenter: {
         textAlign: "center"
     },
-    textAlignRight: {
-        textAlign: "right"
-    },
-    cardHover: {
-        "&:hover": {  
-            "& $image": {
-                opacity: 0.3
-            },
-            // "& $cardHoverSection": {
-            //     opacity: 1
-            // }
+    imageGrid: {
+        [theme.breakpoints.up('sm')]: {
+            position: "relative",
+            textAlign: "center",
+            "&:hover": {  
+                "& $image": {
+                    opacity: 0.3,
+                    zIndex: -1
+                },
+                "& $descGrid": {
+                    opacity: 1,
+                }
+            }
+        },
+        [theme.breakpoints.down('xs')]: {
+            
         }
     },
     image: {
-        opacity: 1,
-        display: "block",
         width: "100%",
         height: "auto",
-        transition: ".5s ease",
-        backfaceVisibility: "hidden",
-        "&:hover": {  
-            "& $image": {
-                opacity: 0.3
-            },
-            // "& $cardHoverSection": {
-            //     opacity: 1
-            // }
+        display: "block",
+        opacity: 1,
+        [theme.breakpoints.up('sm')]: {
+            transition: ".5s ease",
+            backfaceVisibility: "hidden",
+        },
+        [theme.breakpoints.down('xs')]: {
+            
         }
     },
-    cardHoverSection: {
-        transition: ".5s ease",
-        opacity: 0,
-        position: "absolute",
-        top: "55%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        msTransform: "translate(-50%, -50%)",
-        textAlign: "center",
+    descGrid: {
+        [theme.breakpoints.up('sm')]: {
+            transition: ".5s ease",
+            opacity: 0,
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            msTransform: "translate(-50%, -50%)",
+            textAlign: "center"
+        },
+        [theme.breakpoints.down('xs')]: {
+            marginBottom: theme.spacing(1)
+        }
     },
-    cardHoverContent: {
+    desc: {
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
-        padding: theme.spacing(3),
+        [theme.breakpoints.up('sm')]: {
+            padding: theme.spacing(3)
+        }
     },
     mb1: {
         marginBottom: theme.spacing(1)
     },
     mb3: {
         marginBottom: theme.spacing(3)
-    },
-    mt3: {
-        marginTop: theme.spacing(3)
     },
     mt5: {
         marginTop: theme.spacing(5)
@@ -81,36 +87,50 @@ function PortfolioItem({ item, isPortfolioPage = false }) {
     const classes = useStyles();
     const theme = useTheme();
     const atLeastMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
-    const { category, isHighlight, name, duration, desc, imageHref, iframe } = item;
+    const { category, isHighlight, name, duration, desc, imageHref } = item;
 
     const isHomePageContent = isPortfolioPage || (!isPortfolioPage && isHighlight);
 
-    const renderImages = images => {
-        
-        if (images.length === 1) {
-            // return <img src={images[0]} alt={`${category}: ${name}`} width="100%" height="auto" />
+    function renderSideBar(copy, side) {
+        return isPortfolioPage && atLeastMediumScreen && <SideBar copy={category} side={side} />;
+    }
+
+    function renderCategoryTag() {
+        if (atLeastMediumScreen) {
             return (
-                <Card className={classes.cardHover}>
-                    <CardMedia
-                        component="img"
-                        width="100%" height="auto"
-                        image={images[0]}
-                        alt={`${category}: ${name}`}
-                        className={classes.image}
-                    />
-                    <CardContent className={classes.cardHoverSection}>
-                        <Typography gutterBottom variant="h5" component="div" className={classes.cardHoverContent}>
-                            Hover yayy
-                        </Typography>
-                    </CardContent>
-                </Card>
+                <Grid container>
+                    <Typography variant="h6" className={classes.categoryStyle}>{category}</Typography>
+                </Grid>
             );
         }
+        
+        return <Typography variant="h6" className={classes.categoryStyle}>{category}</Typography>;
+    }
 
-        if (images.length === 2) {
+    function renderImageAndDesc() {
+        // return <img src={images[0]} alt={`${category}: ${name}`} width="100%" height="auto" />;
+        return (
+            <Grid container item xs={12} justify="space-between" className={classes.imageGrid}>
+                <Grid className={classes.descGrid}>
+                    <Typography variant="subtitle2" color="textSecondary" className={atLeastMediumScreen && classes.desc}>
+                        Contact me for more details and the Figma file
+                    </Typography>
+                </Grid>
+                {imageHref.length > 0 && 
+                    <img src={imageHref[0]} alt={`${category}: ${name}`} width="100%" height="auto" className={classes.image} />}
+            </Grid>
+        );
+    }
+
+    const renderImages = () => {
+        if (imageHref.length === 1) {
+            return renderImageAndDesc();
+        }
+
+        if (imageHref.length === 2) {
             return (
                 <ImageList cols={2}>
-                    {images.map((href, index) => (
+                    {imageHref.map((href, index) => (
                         <ImageListItem key={`${name}-image${index}`}>
                             <img src={href} srcSet={href} alt={name} loading="lazy" />
                         </ImageListItem>
@@ -120,8 +140,8 @@ function PortfolioItem({ item, isPortfolioPage = false }) {
         }
 
         return (
-            <ImageList variant="masonry" cols={images.length === 3 ? 2 : 3} gap={8}>
-                {images.map((href, index) => (
+            <ImageList variant="masonry" cols={imageHref.length === 3 ? 2 : 3} gap={8}>
+                {imageHref.map((href, index) => (
                     <ImageListItem key={`${name}-image${index}`}>
                         <img src={href} srcSet={href} alt={name} loading="lazy" />
                     </ImageListItem>
@@ -133,32 +153,25 @@ function PortfolioItem({ item, isPortfolioPage = false }) {
     if (isHomePageContent) {
         return (
             <Grid container className={`${classes.fullScreenHeight}`}>
-                {isPortfolioPage && atLeastMediumScreen && <SideBar copy={category} />}
+                {renderSideBar(category, "left")}
                 <Grid container xs={(isPortfolioPage && atLeastMediumScreen) ? 11 : 12} justify="center" alignItems="center" className={`${classes.mt5} ${classes.mb3}`}>
                     <Grid item xs={(isPortfolioPage && atLeastMediumScreen) ? 11 : 10}>
-                        {(atLeastMediumScreen && !isPortfolioPage) && (
-                            <Grid container>
-                                <Typography variant="h6" className={classes.categoryStyle}>{category}</Typography>
-                            </Grid>
-                        )}
+                        {(atLeastMediumScreen && !isPortfolioPage) && renderCategoryTag()}
                         <Grid container item xs={12} justify="space-between" className={classes.mb1}>
                             <Grid container item xs={12} md={6} className={classes.pr1} justify="space-between" alignItems="center">
                                 <Typography variant="h3">{name}</Typography>
-                                {!atLeastMediumScreen && (
-                                    <Typography variant="h6" className={classes.categoryStyle}>{category}</Typography>
-                                )}
+                                {!atLeastMediumScreen && renderCategoryTag()}
                             </Grid>
                             <Grid container item xs={12} md={6}>
                                 <Typography variant="subtitle2" color="textSecondary" className={atLeastMediumScreen && classes.textAlignRight}>{desc}</Typography>
                             </Grid>
                         </Grid>
                         <Grid container item xs={12} justify="space-between" className={classes.mt3}>
-                            {imageHref.length > 0 && renderImages(imageHref)}
-                            {iframe}
+                            {imageHref.length > 0 && renderImages()}
                         </Grid>
                     </Grid>
                 </Grid>
-                {isPortfolioPage && atLeastMediumScreen && <SideBar copy={duration} side="right" />}
+                {renderSideBar(duration, "right")}
             </Grid>
         );
     }
