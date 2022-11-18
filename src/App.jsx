@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { theme } from './theme';
+import NavigateScrollToTop from './components/NavigateScrollToTop';
 import Home from './pages/Home';
 import About from './pages/About';
 import Portfolio from './pages/Portfolio';
@@ -17,6 +18,7 @@ function App() {
       <CssBaseline />
       <div className="wrapper">
         <BrowserRouter>
+          <NavigateScrollToTop />
           <Header />
           <Switch>
             <Route exact path="/michelle/about" component={About} />
