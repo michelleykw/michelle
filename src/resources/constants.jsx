@@ -29,14 +29,6 @@ export const portfolios = [
         imageHref: [roomi]
     },
     {
-        category: 'UI/UX Design',
-        isHighlight: true,
-        name: 'NUSReg',
-        duration: 'Aug 2020 - Dec 2020',
-        desc: 'Redesign of the NUS EduReg, a module registration platform used by students in NUS, through a series of user study.',
-        imageHref: [nusreg]
-    },
-    {
         category: 'Product',
         isHighlight: true,
         name: 'MivPay',
@@ -46,7 +38,15 @@ export const portfolios = [
     },
     {
         category: 'UI/UX Design',
-        isHighlight: true,
+        isHighlight: false,
+        name: 'NUSReg',
+        duration: 'Aug 2020 - Dec 2020',
+        desc: 'Redesign of the NUS EduReg, a module registration platform used by students in NUS, through a series of user study.',
+        imageHref: [nusreg]
+    },
+    {
+        category: 'UI/UX Design',
+        isHighlight: false,
         name: 'Love, Bonito',
         duration: 'Aug 2020 - Jan 2021',
         desc: 'UI/UX and icon designs for minimum checkout for free delivery and media mention.',
@@ -63,7 +63,7 @@ export const portfolios = [
     },
     {
         category: 'Social Media Collaterals',
-        isHighlight: true,
+        isHighlight: false,
         name: 'Enterprise House (N-House)',
         duration: 'Nov 2019 - Mar 2020',
         desc: 'Designed collaterals used on the N-House social media accounts, Telegram channel and email blast to publicise the Wicked Wednesdays events and 10 Year Anniversary.',

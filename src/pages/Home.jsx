@@ -73,7 +73,7 @@ const useStyles = makeStyles(theme => ({
         width: "auto",
         backgroundPosition: "center",
         backgroundSize: "cover",
-        zIndex: "-99"
+        zIndex: -99
     },
     heroShapeImage: {
         backgroundImage: `url(${hero})`,
@@ -83,7 +83,7 @@ const useStyles = makeStyles(theme => ({
         backgroundPosition: "center",
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
-        zIndex: "-1"
+        zIndex: -1
     },
     mb2: {
         marginBottom: theme.spacing(2)
@@ -111,6 +111,7 @@ function Home() {
     });
 
     const goToAbout = () => history.push('/michelle/about');
+    const goToPortfolio = () => history.push('/michelle/portfolio');
 
     const getGreeting = () => {
         const today = new Date();
@@ -142,10 +143,10 @@ function Home() {
         );
     };
 
-    const renderAboutButton = (className, content) => {
+    const renderAboutButton = (content, goTo, className) => {
         return (
             <Grid container justify="center" className={`${className}`}>
-                <MyButton content={content || "About Me"} onClick={goToAbout} className={`${classes.mb2}`}/>
+                <MyButton content={content} onClick={goTo} className={`${classes.mb2}`}/>
             </Grid>
         );
     };
@@ -172,7 +173,7 @@ function Home() {
                 <Grid container item xs={10} md={8} justify="center">
                     <Typography variant="h3" className={`${classes.textAlignCenter} ${classes.mb4} ${atLeastMediumScreen && classes.hoverCursor}`}>
                         {homeIntroduction}
-                        {renderAboutButton(classes.mt4, "More About Me")}
+                        {renderAboutButton("More About Me", goToAbout, classes.mt4)}
                         {renderCursorStyle()}
                     </Typography>
                 </Grid>
@@ -191,7 +192,7 @@ function Home() {
                 <Grid container item justify="center">
                     {portfolios.map(item => <PortfolioItem item={item} />)}
                     {renderCursorStyle()}
-                    {renderAboutButton(classes.mb2)}
+                    {renderAboutButton("View Portfolio", goToPortfolio,classes.mb2)}
                 </Grid>
             </Grid>
         );
