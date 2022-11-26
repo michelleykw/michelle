@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from "react-router-dom";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -55,9 +56,14 @@ const useStyles = makeStyles(theme => ({
 
 function Contact() {
     const classes = useStyles();
-
     const theme = useTheme();
     const atLeastScreenSmall = useMediaQuery(theme.breakpoints.up('sm'));
+
+    function useQuery() {
+        const { search } = useLocation();
+        return React.useMemo(() => new URLSearchParams(search), [search]);
+      }
+    const query = useQuery();
 
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isSubmitError, setIsSubmitError] = useState(false);
@@ -67,7 +73,7 @@ function Contact() {
         lastName: "",
         email: "",
         mobile: "",
-        subject: "",
+        subject: query.get("subject") || "",
         message: ""
     };
 

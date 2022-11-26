@@ -1,7 +1,9 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import { Button, Chip, Grid, Typography } from '@material-ui/core';
 import { ImageList, ImageListItem } from '@mui/material';
-import SideBar from '../components/SideBar';
+import SideBar from './SideBar';
+import MyButton from './MyButton';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
@@ -25,7 +27,7 @@ const useStyles = makeStyles(theme => ({
             textAlign: "center",
             "&:hover": {  
                 "& $image": {
-                    opacity: 0.3,
+                    opacity: 0.4,
                     zIndex: 0
                 },
                 "& $descGrid": {
@@ -84,8 +86,12 @@ const useStyles = makeStyles(theme => ({
 function PortfolioItem({ item, isPortfolioPage = false }) {
     const classes = useStyles();
     const theme = useTheme();
+    const history = useHistory();
+    const atLeastSmallScreen = useMediaQuery(theme.breakpoints.up('sm'));
     const atLeastMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
     const { category, isHighlight, name, duration, desc, imageHref } = item;
+
+    const goToContact = () => history.push(`/michelle/contact?subject=Interested%20to%20know%20more%20about%20${name}`);
 
     function renderSideBar(copy, side) {
         return isPortfolioPage && atLeastMediumScreen && <SideBar copy={category} side={side} />;
@@ -102,11 +108,13 @@ function PortfolioItem({ item, isPortfolioPage = false }) {
     function renderImageAndDesc() {
         return (
             <Grid container item xs={12} justify="space-between" className={classes.imageGrid}>
-                {atLeastMediumScreen && (
+                {atLeastSmallScreen && (
                     <Grid className={classes.descGrid}>
-                        <Typography variant="subtitle2" color="textSecondary" className={classes.desc}>
-                            Contact me for more details
-                        </Typography>
+                        <MyButton 
+                            content="Contact me for more details" 
+                            onClick={goToContact}
+                            className={classes.desc}
+                        />
                     </Grid>
                 )}
                 <img src={imageHref[0]} alt={`${category}: ${name}`} width="100%" height="auto" className={classes.image} />
@@ -157,7 +165,7 @@ function PortfolioItem({ item, isPortfolioPage = false }) {
                                 alignItems={!atLeastMediumScreen && "center"}
                             >
                                 <Typography variant="h3">{name}</Typography>
-                                {!isPortfolioPage && renderCategoryTag()}
+                                {(!isPortfolioPage || !atLeastMediumScreen) && renderCategoryTag()}
                             </Grid>
                             <Grid container item xs={12} md={6}>
                                 <Typography variant="subtitle2" color="textSecondary" className={atLeastMediumScreen && classes.textAlignRight}>{desc}</Typography>
