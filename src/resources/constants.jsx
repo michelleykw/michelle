@@ -19,6 +19,7 @@ import nhouse2 from '../resources/portfolio/nhouse2.png';
 import nhouse3 from '../resources/portfolio/nhouse3.png';
 import mivpay from '../resources/portfolio/mivpay.svg';
 import ava from '../resources/portfolio/ava.png';
+import advice_generator from '../resources/portfolio/advice_generator.png';
 
 const categories = {
     UIUX: 'UI/UX Design',
@@ -35,6 +36,14 @@ export const portfolios = [
         duration: 'March 2022 - May 2022',
         desc: 'Designed UI for a financial platform for learning and investment, with the aim to help women in improving financial literacy',
         imageHref: [ava]
+    },
+    {
+        category: categories.FE,
+        isHighlight: true,
+        name: 'Advice Generator',
+        duration: 'Dec 2022',
+        desc: 'Responsive random advice generator through API integration and developed using VueJS, HTML and CSS, where users can generate new advice by rolling the dice',
+        imageHref: [advice_generator]
     },
     {
         category: categories.UIUX,
