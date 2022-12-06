@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
-import { Chip, Grid, Typography } from '@material-ui/core';
+import { Button, Chip, Grid, Typography } from '@material-ui/core';
 import { ImageList, ImageListItem } from '@mui/material';
 import SideBar from './SideBar';
 import MyButton from './MyButton';
@@ -75,6 +75,9 @@ const useStyles = makeStyles(theme => ({
     mb3: {
         marginBottom: theme.spacing(3)
     },
+    mt1: {
+        marginTop: theme.spacing(1)
+    },
     mt5: {
         marginTop: theme.spacing(5)
     },
@@ -89,7 +92,7 @@ function PortfolioItem({ item, isPortfolioPage = false }) {
     const history = useHistory();
     const atLeastSmallScreen = useMediaQuery(theme.breakpoints.up('sm'));
     const atLeastMediumScreen = useMediaQuery(theme.breakpoints.up('md'));
-    const { category, isHighlight, name, duration, desc, imageHref } = item;
+    const { category, isHighlight, name, duration, desc, imageHref, githubUrl } = item;
 
     const goToContact = () => history.push(`/michelle/contact?subject=Interested%20to%20know%20more%20about%20${name}`);
 
@@ -115,6 +118,11 @@ function PortfolioItem({ item, isPortfolioPage = false }) {
                             onClick={goToContact}
                             className={classes.desc}
                         />
+                        {githubUrl && (
+                            <Button href={githubUrl} target="_blank" className={classes.mt1}>
+                                See source code
+                            </Button>
+                        )}
                     </Grid>
                 )}
                 <img src={imageHref[0]} alt={`${category}: ${name}`} width="100%" height="auto" className={classes.image} />

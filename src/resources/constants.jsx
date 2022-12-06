@@ -43,7 +43,8 @@ export const portfolios = [
         name: 'Advice Generator',
         duration: 'Dec 2022',
         desc: 'Responsive random advice generator through API integration and developed using VueJS, HTML and CSS, where users can generate new advice by rolling the dice',
-        imageHref: [advice_generator]
+        imageHref: [advice_generator],
+        githubUrl: 'https://github.com/michelleykw/vue-advice-generator'
     },
     {
         category: categories.UIUX,
