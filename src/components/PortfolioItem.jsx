@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
-import { Button, Chip, Grid, Typography } from '@material-ui/core';
+import { Chip, Grid, Typography } from '@material-ui/core';
 import { ImageList, ImageListItem } from '@mui/material';
 import SideBar from './SideBar';
 import MyButton from './MyButton';
@@ -150,8 +150,8 @@ function PortfolioItem({ item, isPortfolioPage = false }) {
         );
     };
 
-    const isHomePageContent = isPortfolioPage || (!isPortfolioPage && isHighlight);
-    if (isHomePageContent) {
+    const fullDisplay = isPortfolioPage || (!isPortfolioPage && isHighlight);
+    if (fullDisplay) {
         return (
             <Grid container className={`${classes.fullScreenHeight}`}>
                 {renderSideBar(category, "left")}

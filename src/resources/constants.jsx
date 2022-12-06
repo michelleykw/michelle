@@ -18,10 +18,26 @@ import nhouse1 from '../resources/portfolio/nhouse1.png';
 import nhouse2 from '../resources/portfolio/nhouse2.png';
 import nhouse3 from '../resources/portfolio/nhouse3.png';
 import mivpay from '../resources/portfolio/mivpay.svg';
+import ava from '../resources/portfolio/ava.png';
+
+const categories = {
+    UIUX: 'UI/UX Design',
+    PM: 'Product',
+    FE: 'Frontend Development',
+    IG: 'Social Media Collaterals',
+};
 
 export const portfolios = [
     {
-        category: 'UI/UX Design',
+        category: categories.UIUX,
+        isHighlight: true,
+        name: 'Ava',
+        duration: 'March 2022 - May 2022',
+        desc: 'Designed UI for a financial platform for learning and investment, with the aim to help women in improving financial literacy',
+        imageHref: [ava]
+    },
+    {
+        category: categories.UIUX,
         isHighlight: true,
         name: 'Roomi',
         duration: 'Aug 2020 - Dec 2020',
@@ -29,7 +45,7 @@ export const portfolios = [
         imageHref: [roomi]
     },
     {
-        category: 'Product',
+        category: categories.PM,
         isHighlight: true,
         name: 'MivPay',
         duration: 'Jan 2021 - Jul 2021',
@@ -37,7 +53,7 @@ export const portfolios = [
         imageHref: [mivpay]
     },
     {
-        category: 'UI/UX Design',
+        category: categories.UIUX,
         isHighlight: false,
         name: 'NUSReg',
         duration: 'Aug 2020 - Dec 2020',
@@ -45,7 +61,7 @@ export const portfolios = [
         imageHref: [nusreg]
     },
     {
-        category: 'UI/UX Design',
+        category: categories.UIUX,
         isHighlight: false,
         name: 'Love, Bonito',
         duration: 'Aug 2020 - Jan 2021',
@@ -53,7 +69,7 @@ export const portfolios = [
         imageHref: [lb_mobile_ab, lb_mobile_checkout1, lb_laptop_ab2, lb_mobile_checkout2, lb_laptop_ab1, lb_mobile_checkout3, lb_mobile_checkout4]
     },
     {
-        category: 'Social Media Collaterals',
+        category: categories.IG,
         isHighlight: false,
         name: 'NUSSU Open Day 2020',
         duration: '',
@@ -62,7 +78,7 @@ export const portfolios = [
         imageHref: [odsv1, odsv2]
     },
     {
-        category: 'Social Media Collaterals',
+        category: categories.IG,
         isHighlight: false,
         name: 'Enterprise House (N-House)',
         duration: 'Nov 2019 - Mar 2020',
