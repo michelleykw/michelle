@@ -20,6 +20,7 @@ import nhouse3 from '../resources/portfolio/nhouse3.png';
 import mivpay from '../resources/portfolio/mivpay.svg';
 import ava from '../resources/portfolio/ava.png';
 import advice_generator from '../resources/portfolio/advice_generator.png';
+import mental_health_app from '../resources/portfolio/mental_health_app.png';
 
 const categories = {
     UIUX: 'UI/UX Design',
@@ -29,6 +30,14 @@ const categories = {
 };
 
 export const portfolios = [
+    {
+        category: categories.FE,
+        isHighlight: true,
+        name: 'hAlp! Mental Wellness',
+        duration: 'Aug 2022',
+        desc: 'Developed frontend of a mental wellness APP in 24H for Sea Hackathon, acheiving recognition by the judges',
+        imageHref: [mental_health_app]
+    },
     {
         category: categories.UIUX,
         isHighlight: true,
