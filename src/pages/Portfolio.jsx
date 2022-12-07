@@ -50,21 +50,8 @@ function Portfolio() {
 
     const goToAbout = () => history.push('/michelle/about');
 
-    const canva = () => {
-        return (
-            <Grid>
-                <div className={classes.canvaDivStyle}>
-                    <iframe loading="lazy" className={classes.canvaIFrameStyle} src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFCK_CGh50&#x2F;view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" />
-                </div>
-                <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFCK_CGh50&#x2F;view?utm_content=DAFCK_CGh50&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Design by Michelle</a>
-            </Grid>
-        );
-    };
-        
-
     return (
         <Grid container>
-            {/*canva()*/}
             {portfolios.map(item => <PortfolioItem item={item} isPortfolioPage={true}/>)}
             <Grid container justify="center" className={`${classes.pt2} ${classes.borderStyle}`}>
                 <MyButton content="About Me" onClick={goToAbout} className={`${classes.mb2}`}/>

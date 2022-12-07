@@ -34,9 +34,9 @@ export const portfolios = [
     {
         category: categories.FE,
         isHighlight: true,
-        name: 'hAlp! Mental Wellness',
+        name: 'hALP!',
         duration: 'Aug 2022',
-        desc: 'Developed frontend of a mental wellness APP in 24H for Sea Hackathon, acheiving recognition by the judges',
+        desc: 'Developed a mental wellness web app using React and TypeScript for Sea 24h Hackathon',
         imageHref: [mental_health_app]
     },
     {
@@ -190,11 +190,11 @@ export const education = [
     }
 ];
 
-export const expertise = 'Product Management, Web Design and Development, UI/UX Design, Front End Development, Project Management';
+export const expertise = 'Web Design and Development, Product Management, UI/UX Design, Front End Development, Project Management';
 
-export const homeIntroduction = "Hello 👋🏻 I’m Michelle, an aspiring Product Manager and Web Developer. As a recent NUS Computer Science graduate, I enjoy working on software products, providing value to users and improving their overall user experience. See my profile for more information on my past experiences in Sea Labs, GoalsMapper and Love, Bonito!";
+export const homeIntroduction = "Hello 👋🏻 I’m Michelle, an aspiring Web Developer and Product Manager. As a recent NUS Computer Science graduate, I enjoy working on software products, providing value to users and improving their overall user experience. See my profile for more information on my past experiences in Sea Labs, GoalsMapper and Love, Bonito!";
 
-export const aboutIntroduction = "Hello there, nice to meet you! This is Michelle, a Product Manager and Web Developer in the tech industry. I had recently graduated from NUS with a Bachelor of Computing in Computer Science (Honours) and minor in Management. Back when I was on the NOC Singapore program, I discovered my passion in understanding the needs of people and coming up with tech solutions to address them. Product, Design, Development and Analysis drive my purpose in life ♡";
+export const aboutIntroduction = "Hello there, nice to meet you! This is Michelle, a Web Developer and Product Manager in the tech industry. I had recently graduated from NUS with a Bachelor of Computing in Computer Science (Honours) and minor in Management. Back when I was on the NOC Singapore program, I discovered my passion in understanding the needs of people and coming up with tech solutions to address them. Product, Design, Development and Analysis drive my purpose in life ♡";
 
 export const aboutIntroduction2 = "In my free time, I like to play badminton with my peers! I enjoy travelling and here is a photo of me back in Germany. Would love to connect through LinkedIn to chat more :)";
 
@@ -211,11 +211,11 @@ export const socials = [
         icon: <LinkedInIcon />,
         href: "https://www.linkedin.com/in/michelle-yong"
     },
-    // {
-    //     label: "Github",
-    //     icon: <GitHubIcon />,
-    //     href: "https://github.com/michelleykw"
-    // },
+    {
+        label: "Github",
+        icon: <GitHubIcon />,
+        href: "https://github.com/michelleykw"
+    },
     {
         label: "Instagram",
         icon: <InstagramIcon />,
