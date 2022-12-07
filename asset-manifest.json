@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/michelle/static/js/main.c97cc6df.js",
+    "main.js": "/michelle/static/js/main.5a2696f8.js",
     "static/media/mivpay.svg": "/michelle/static/media/mivpay.f2db3261e1d83e09161c021d004ee178.svg",
     "static/media/roomi.svg": "/michelle/static/media/roomi.7039480447ea29f4ee1609f2cadeccc6.svg",
     "static/media/nusreg.png": "/michelle/static/media/nusreg.7a54ea4a48dfba427384.png",
@@ -13,18 +13,20 @@
     "static/media/lb_mobile_ab.png": "/michelle/static/media/lb_mobile_ab.9ef1ff4ca0148f880720.png",
     "static/media/lb_mobile_checkout1.png": "/michelle/static/media/lb_mobile_checkout1.9ef1ff4ca0148f880720.png",
     "static/media/lb_mobile_checkout4.png": "/michelle/static/media/lb_mobile_checkout4.012976676bd1ca3e5092.png",
+    "static/media/mental_health_app.png": "/michelle/static/media/mental_health_app.b545989deb6d55a39b0b.png",
     "static/media/lb_mobile_checkout3.png": "/michelle/static/media/lb_mobile_checkout3.9e9d81a04a92abcf7639.png",
     "static/media/lb_mobile_checkout2.png": "/michelle/static/media/lb_mobile_checkout2.1d1282846183284928c5.png",
     "static/media/nhouse2.png": "/michelle/static/media/nhouse2.f769c545b73e76f73309.png",
     "static/media/background.png": "/michelle/static/media/background.5c78eb5a23c920de1b40.png",
     "static/media/nhouse1.png": "/michelle/static/media/nhouse1.964ced645d5ab0c838b7.png",
     "static/media/profile.jpg": "/michelle/static/media/profile.42dc3ba88755aa410ac2.jpg",
+    "static/media/task_tracker.png": "/michelle/static/media/task_tracker.ed016b1a501d2515d03c.png",
     "static/media/advice_generator.png": "/michelle/static/media/advice_generator.2ba885bc8a97c3c6a2dc.png",
     "static/media/hero.svg": "/michelle/static/media/hero.9fe211a5e1d06fc858b1549ceaf47ca3.svg",
     "index.html": "/michelle/index.html",
-    "main.c97cc6df.js.map": "/michelle/static/js/main.c97cc6df.js.map"
+    "main.5a2696f8.js.map": "/michelle/static/js/main.5a2696f8.js.map"
   },
   "entrypoints": [
-    "static/js/main.c97cc6df.js"
+    "static/js/main.5a2696f8.js"
   ]
 }
