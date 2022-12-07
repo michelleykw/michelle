@@ -21,6 +21,7 @@ import mivpay from '../resources/portfolio/mivpay.svg';
 import ava from '../resources/portfolio/ava.png';
 import advice_generator from '../resources/portfolio/advice_generator.png';
 import mental_health_app from '../resources/portfolio/mental_health_app.png';
+import task_tracker from '../resources/portfolio/task_tracker.png';
 
 const categories = {
     UIUX: 'UI/UX Design',
@@ -54,6 +55,15 @@ export const portfolios = [
         desc: 'Responsive random advice generator through API integration and developed using VueJS, HTML and CSS, where users can generate new advice by rolling the dice',
         imageHref: [advice_generator],
         githubUrl: 'https://github.com/michelleykw/vue-advice-generator'
+    },
+    {
+        category: categories.FE,
+        isHighlight: true,
+        name: 'Simple Task Tracker',
+        duration: 'Dec 2022',
+        desc: 'Task tracker developed using VueJS, HTML and CSS, where users can add, delete and highlight tasks',
+        imageHref: [task_tracker],
+        githubUrl: 'https://github.com/michelleykw/vue-task-tracker'
     },
     {
         category: categories.UIUX,
