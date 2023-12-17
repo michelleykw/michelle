@@ -255,7 +255,7 @@ function About() {
                     {name}
                 </Typography>
                 <Typography variant="subtitle1" className={`${classes.textAlignCenter} ${atLeastMediumScreen ? classes.mb3 : classes.mb2}`}>
-                    {`${duration} @ ${company}`}
+                    {duration}{company != null && ' @ ' + company}
                 </Typography>
                 <ul className={`${classes.ul} ${atLeastMediumScreen ? classes.mb5 : classes.mb3}`}>
                     {desc.map(item => <li className={classes.li}>{item}</li>)}

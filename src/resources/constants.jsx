@@ -47,24 +47,24 @@ export const portfolios = [
         desc: 'Designed UI for a financial platform for learning and investment, with the aim to help women in improving financial literacy',
         imageHref: [ava]
     },
-    {
-        category: categories.FE,
-        isHighlight: true,
-        name: 'Advice Generator',
-        duration: 'Dec 2022',
-        desc: 'Responsive random advice generator through API integration and developed using VueJS, HTML and CSS, where users can generate new advice by rolling the dice',
-        imageHref: [advice_generator],
-        githubUrl: 'https://github.com/michelleykw/vue-advice-generator'
-    },
-    {
-        category: categories.FE,
-        isHighlight: true,
-        name: 'Simple Task Tracker',
-        duration: 'Dec 2022',
-        desc: 'Task tracker developed using VueJS, HTML and CSS, where users can add, delete and highlight tasks',
-        imageHref: [task_tracker],
-        githubUrl: 'https://github.com/michelleykw/vue-task-tracker'
-    },
+    // {
+    //     category: categories.FE,
+    //     isHighlight: true,
+    //     name: 'Advice Generator',
+    //     duration: 'Dec 2022',
+    //     desc: 'Responsive random advice generator through API integration and developed using VueJS, HTML and CSS, where users can generate new advice by rolling the dice',
+    //     imageHref: [advice_generator],
+    //     githubUrl: 'https://github.com/michelleykw/vue-advice-generator'
+    // },
+    // {
+    //     category: categories.FE,
+    //     isHighlight: true,
+    //     name: 'Simple Task Tracker',
+    //     duration: 'Dec 2022',
+    //     desc: 'Task tracker developed using VueJS, HTML and CSS, where users can add, delete and highlight tasks',
+    //     imageHref: [task_tracker],
+    //     githubUrl: 'https://github.com/michelleykw/vue-task-tracker'
+    // },
     {
         category: categories.UIUX,
         isHighlight: true,
@@ -118,16 +118,36 @@ export const portfolios = [
 
 export const experiences = [
     {
+        name: "Software Engineer (SEED)",
+        duration: "Jul 2023 - Now",
+        company: "DBS",
+        desc: [
+            "Part of DBS Consumer Banking Group Technology (Investment & Insurance), working on various projects based on business needs",
+            "Developed batch processes and backend using SpringBoot (Java) and FastAPI (Python) and wrote test cases in JUnit, Mockito and Pytest",
+            "Joined additional committee such as TechTrek 2024 (Hackathon to hire fresh graduate) and D&D 2024"
+        ]
+    },
+    {
+        name: "Digital Product Manager (Assistant)",
+        duration: "Mar 2023 - Jun 2023",
+        company: "DBS",
+        desc: [
+            "Part of DBS Consumer Banking Group, working on the UI/UX design of POSB Smart Buddy App",
+            "Led discussions with product lead, developers and legal team, and designed user journeys on Figma for over 5 different new modules in the application",
+            "Proposed product improvements based on users’ feedback and market research"
+        ]
+    },
+    {
         name: "Product Manager (Associate)",
         duration: "Jun 2022 - Sep 2022",
         company: "Sea Limited",
         desc: [
             "Part of Sea Labs (R&D department in Sea), working on a sports application for fans and club manager",
-            "Design features from end-to-end, from research and ideation to validation and implementation",
-            "Oversee the product life cycle and anticipate blockers",
-            "Develop conceptual diagrams, wireframes (using Figma and Miro), and product design documents (RAR / PRD)",
-            "Work closely with designers and developers to optimise resources and deliver product with high quality",
-            "Take ownership of projects, communicate requirements and timelines with stakeholders",
+            "Designed features from end-to-end, from research and ideation to validation and implementation",
+            "Oversaw the product life cycle and anticipate blockers",
+            "Developed conceptual diagrams, wireframes (using Figma and Miro), and product design documents (RAR / PRD)",
+            "Worked closely with designers and developers to optimise resources and deliver product with high quality",
+            "Took ownership of projects, communicate requirements and timelines with stakeholders",
             "Built a mental health app as a frontend developer for a 24-hour hackathon organised by Sea"
         ]
     },
@@ -158,10 +178,10 @@ export const experiences = [
     },
     {
         name: "Part-Time Private Tutor (Secondary)",
-        duration: "Feb 2018 – Oct 2021",
-        company: "SmileTutor Pte Ltd",
+        duration: "Feb 2018 – Oct 2023",
+        company: null,
         desc: [
-            "Tutored 8 students over 3.5 years, with observed improvements of at least 2 grades",
+            "Tutored 10 students, with observed improvements of at least 2 grades for Upper Secondary Mathematics & Science",
             "Evaluated student’s progress and discussed with parents on how to work on their weaknesses",
             "Prepared educational materials, assigned homework and corrected assignments"
         ]
@@ -192,9 +212,9 @@ export const education = [
 
 export const expertise = 'Web Design and Development, Product Management, UI/UX Design, Front End Development, Project Management';
 
-export const homeIntroduction = "Hello 👋🏻 I’m Michelle, an aspiring Web Developer and Product Manager. As a recent NUS Computer Science graduate, I enjoy working on software products, providing value to users and improving their overall user experience. See my profile for more information on my past experiences in Sea Labs, GoalsMapper and Love, Bonito!";
+export const homeIntroduction = "Hello 👋🏻 I’m Michelle, a Developer and Product Manager. I enjoy working on software products, providing value to users and improving their overall user experience. See my profile for more information on my experiences in DBS, Sea Labs, LoveBonito, etc!";
 
-export const aboutIntroduction = "Hello there, nice to meet you! This is Michelle, a Web Developer and Product Manager in the tech industry. I had recently graduated from NUS with a Bachelor of Computing in Computer Science (Honours) and minor in Management. Back when I was on the NOC Singapore program, I discovered my passion in understanding the needs of people and coming up with tech solutions to address them. Product, Design, Development and Analysis drive my purpose in life ♡";
+export const aboutIntroduction = "Hello there, nice to meet you! This is Michelle, a Developer and Product Manager in the tech industry. I had recently graduated from NUS with a Bachelor of Computing in Computer Science (Honours) and minor in Management. Back when I was on the NOC Singapore program, I discovered my passion in understanding the needs of people and coming up with tech solutions to address them. Product, Design, Development and Analysis drive my purpose in life ♡";
 
 export const aboutIntroduction2 = "In my free time, I like to play badminton with my peers! I enjoy travelling and here is a photo of me back in Germany. Would love to connect through LinkedIn to chat more :)";
 
@@ -235,7 +255,7 @@ export const tools = [
     },
     {
         name: 'UI/UX Design',
-        toolList: ['Figma', 'FluidUI', 'Balsamiq', 'WordPress', 'Wix', 'Canva', 'Adobe Illustrator']
+        toolList: ['Figma', 'FluidUI', 'Balsamiq', 'WordPress', 'Canva']
     },
     {
         name: 'Project Management',
@@ -243,7 +263,7 @@ export const tools = [
     },
     {
         name: 'Programming Languages',
-        toolList: ['JavaScript', 'Python', 'HTML', 'CSS'] // 'Java', 'Swift', 'C', 'C++', 'Solidity'
+        toolList: ['JavaScript', 'Java', 'Python', 'HTML', 'CSS'] // 'Swift', 'C', 'C++', 'Solidity'
     },
     {
         name: 'Web Dev - Frontend',
@@ -251,11 +271,19 @@ export const tools = [
     },
     {
         name: 'Web Dev - Backend',
-        toolList: ['Django Python', 'PostgreSQL', 'MongoDB', 'NodeJS']
+        toolList: ['Django Python', 'Python with FastAPI', 'SpringBoot', 'PostgreSQL', 'MongoDB', 'NodeJS']
     },
 ];
 
 export const cca = [
+    // {
+    //     cca: 'TechTrek 2024 (DBS)',
+    //     name: 'Committee Member, Volunteers and Assessors Team',
+    //     duration: 'Aug 2023 - Jan 2024',
+    //     desc: [
+    //         'Recruited over 25 volunteers to join as Table ICs on the day of the hackathon'
+    //     ]
+    // },
     {
         cca: 'NUS ENterprise House (N-House)',
         name: 'Residential Assistant, Marketing Communications',
@@ -263,7 +291,7 @@ export const cca = [
         desc: [
             'Organised events to support residents in their entrepreneurial journey, including company visits to various companies such as Shopback and xFers',
             'Counselled undergraduate residents from various background on academic and personal questions',
-            "Led the team for publicity and production projects to publicise N-House events",
+            'Led the team for publicity and production projects to publicise N-House events',
             "Designed posters published on N-House social media for various events from Jan 2021 to May 2022, including N-House’s flagship event - Pitch Night - and 10 Year Anniversary, using Canva and Illustrator",
         ]
     },

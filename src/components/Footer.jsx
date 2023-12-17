@@ -45,6 +45,11 @@ function Footer() {
         };
     }, []);
 
+    const getCurrentYear = () => {
+        const d = new Date();
+        return d.getFullYear();
+    }
+
     return (
         <AppBar position="static" className={classes.appBar} id="footer">
             <Toolbar className={`${classes.socialMediaBar} ${classes.toolBar}`}>
@@ -56,7 +61,7 @@ function Footer() {
             </Toolbar>
             <Toolbar className={classes.toolBar}>
               <Typography variant="body1" color="inherit">
-                © 2022 by Michelle Yong;
+                © {getCurrentYear()} by Michelle Yong;
               </Typography>
             </Toolbar>
         </AppBar>
